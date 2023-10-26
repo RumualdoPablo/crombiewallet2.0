@@ -1,16 +1,9 @@
-export interface registerForm {
+export interface RegisterForm {
     email: string;
     name: string;
     password: string;
     confirmPassword: string;
     profilePictureURL?: string;
-  }
-  
-  export interface RegisterForm {
-    name: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
   }
   
   export interface UserData {

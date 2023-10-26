@@ -5,6 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import { db } from "@/app/firebase";
 import Expenses from "@/app/components/Expenses";
 import { UserAuth } from "@/app/context/AuthContext";
+import Image from "next/image";
 
 interface UserData {
   name: string;
@@ -50,7 +51,7 @@ const Profile = () => {
     <div className="text-white">
       <h1>Welcome, {userData?.name}</h1>
       <p>Email: {userData?.email}</p>
-      <img src={userData?.profilePictureURL} alt="User Avatar" />
+      <Image src={userData?.profilePictureURL} alt="User Avatar" />
       <Expenses/>
     </div>
   );
