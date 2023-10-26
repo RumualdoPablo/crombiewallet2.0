@@ -11,8 +11,8 @@ import {
 } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
-import { AuthContextProps, UserData, RegisterForm } from "../interfaces/registerForm";
-import { auth, db } from "../app/firebase";
+import { AuthContextProps, UserData, RegisterForm } from "@/interfaces/registerForm";
+import { auth, db } from "@/firebase";
 
 
 export const AuthContext = createContext<AuthContextProps | null>(null);
@@ -66,6 +66,7 @@ export const AuthContextProvider = ({
         email: formData.email,
         profilePictureURL: formData.profilePictureURL,
         expenses: [],
+        income: []
       };
       await setDoc(userDocRef, userData);
 

@@ -1,3 +1,5 @@
+
+//Interfaz para los datos del registro de usuarios
 export interface RegisterForm {
     email: string;
     name: string;
@@ -6,15 +8,17 @@ export interface RegisterForm {
     profilePictureURL?: string;
   }
   
+  //Interfaz para los datos del usuario
   export interface UserData {
-      uid: string | null
-      name: string | null;
-      email: string | null;
+      uid: string
+      name: string;
+      email: string;
       profilePictureURL: string | null;
     }
   
+  //Interfaz para los props que le son pasados al contexto de autenticación
   export interface AuthContextProps {
-    user: UserData | null;
+    user: UserData;
     googleSignIn: () => Promise<void>;
     logOut: () => void;
     registerUser: (formData: RegisterForm) => Promise<void>;
