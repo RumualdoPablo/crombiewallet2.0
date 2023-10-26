@@ -17,7 +17,7 @@ export interface RegisterForm {
     user: UserData | null;
     googleSignIn: () => Promise<void>;
     logOut: () => void;
-    registerUser: (formData: registerForm) => Promise<void>;
+    registerUser: (formData: RegisterForm) => Promise<void>;
     signInUser: (email: string, password: string) => Promise<void>;
   }
   

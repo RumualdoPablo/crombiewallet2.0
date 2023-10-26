@@ -12,7 +12,7 @@ import {
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { AuthContextProps, UserData, registerForm } from "../interfaces/registerForm";
-import { auth, db } from "../firebase";
+import { auth, db } from "../app/firebase";
 
 
 export const AuthContext = createContext<AuthContextProps | null>(null);

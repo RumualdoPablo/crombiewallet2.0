@@ -1,8 +1,8 @@
 "use client";
 import React, { useState, useContext, FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { UserAuth } from "../context/AuthContext";
-import Button from "../components/Button";
+import { UserAuth } from "../../context/AuthContext";
+import Button from "../../components/Button";
 
 
 function LoginPage() {

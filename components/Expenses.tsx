@@ -1,7 +1,7 @@
 // Expenses.js
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import React, { FormEvent, useEffect, useState } from 'react';
-import { db } from '../firebase';
+import { db } from '../app/firebase';
 import { UserAuth } from '../context/AuthContext';
 
 const Expenses = () => {
