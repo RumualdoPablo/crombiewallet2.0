@@ -3,8 +3,8 @@ import React, { useState, FormEvent } from "react";
 import Image from "next/image";
 import { RegisterForm } from "../../interfaces/registerForm";
 import { validateRegistrationForm } from "../utils/RegisterFormValidations";
-import { UserAuth } from "../../context/AuthContext";
-import Button from "../../components/Button";
+import { UserAuth } from "@/context/AuthContext";
+import Button from "@/components/Button";
 
 function Page() {
   const [formData, setFormData] = useState<RegisterForm>({

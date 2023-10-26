@@ -11,7 +11,7 @@ import {
 } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
-import { AuthContextProps, UserData, registerForm } from "../interfaces/registerForm";
+import { AuthContextProps, UserData, RegisterForm } from "../interfaces/registerForm";
 import { auth, db } from "../app/firebase";
 
 
@@ -51,7 +51,7 @@ export const AuthContextProvider = ({
     }
   };
 
-  const registerUser = async (formData: registerForm) => {
+  const registerUser = async (formData: RegisterForm) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
