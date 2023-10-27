@@ -2,30 +2,18 @@
 
 import { useCallback, useEffect, useState } from "react"
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
-import Input from "./Input"
-import Button from "./Button"
 import axios from "axios"
 import { toast } from "react-hot-toast"
-// import { signIn, useSession } from 'next-auth/react'
 import { validateRegistrationForm } from "@/utils/RegisterFormValidations";
-import { useRouter } from "next/navigation"
 import { UserAuth } from "@/context/AuthContext"
+import { RegisterForm } from "@/interfaces/RegisterForm"
+import RegistrationForm from "./AuthComponents/RegistrationForm"
+import LogInForm from "./AuthComponents/LogInForm"
 
 type Variant = "LOGIN" | "REGISTER"
 
 const AuthForm = () => {
   const [variant, setVariant] = useState<Variant>("LOGIN")
-  const [isLoading, setIsLoading] = useState(false)
-  const { googleSignIn, registerUser } = UserAuth();
-
-  const router = useRouter()
-  // const session = useSession()
-
-  // useEffect(() => {
-  //   if(session?.status === 'authenticated') {
-  //     router.push('/dashboard')
-  //   }
-  // }, [session?.status, router])
 
   const toggleVariant = useCallback(() => {
     if (variant === "LOGIN") {
@@ -35,191 +23,16 @@ const AuthForm = () => {
     }
   }, [variant])
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FieldValues>({
-    defaultValues: {
-      name: "",
-      email: "",
-      password: "",
-    },
-  })
-
-  // const onSubmit: SubmitHandler<FieldValues> = (data) => {
-  //   setIsLoading(true)
-
-  //   if (variant === "REGISTER") {
-  //     axios.post('/api/register', data)
-  //     .then(() => signIn('credentials', data))
-  //     .catch(() => toast.error('Something went wrong!'))
-  //     .finally(() => setIsLoading(false))
-  //   }
-
-  //   if (variant === "LOGIN") {
-  //     signIn('credentials', {
-  //       ...data,
-  //       redirect: false
-  //     })
-  //     .then((callback) => {
-  //       if(callback?.error){
-  //         toast.error('Incorrect credentials')
-  //       }
-
-  //       if(callback?.ok && !callback?.error){
-  //         toast.success('Session started!')
-  //         router.push('/dashboard')
-  //         router.refresh()
-  //       }
-  //     })
-  //     .finally(() => setIsLoading(false))
-  //   }
-  // }
-
-  // const socialAction = async (action: string) => {
-  //   setIsLoading(true)
-
-  //   await signIn(action, {redirect: false})
-  //   .then((callback) => {
-  //     if(callback?.error){
-  //       toast.error('Incorrect credentials')
-  //     }
-
-  //     if(callback?.ok && !callback?.error){
-  //       toast.success('Session started!')
-  //       router.push('/dashboard')
-  //     }
-  //   })
-  //   .finally(() => setIsLoading(false))
-  // }
-
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    setIsLoading(true)
-    if (variant === "REGISTER") {
-      // const validationError = validateRegistrationForm(formData);
-      try {
-        await registerUser(formData)
-      } catch (error) {
-        
-      }
-    }
-  }
 
   return (
-    <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-      <div
-        className="bg-white px-4 py-8 shadow
-            sm:rounded-lg sm:px-10"
-
-        {variant === "REGISTER" ?
-            <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-              <Input
-              id="name"
-              label="Name"
-              type="text"
-              register={register}
-              errors={errors}
-              disabled={isLoading}
-              required={true}
-            />
-
-            <Input
-            id="email"
-            label="Email"
-            type="email"
-            register={register}
-            errors={errors}
-            disabled={isLoading}
-            required={true}
-          />
-
-            <Input
-            id="password"
-            label="Password"
-            type="password"
-            register={register}
-            errors={errors}
-            disabled={isLoading}
-            required={true}
-          />
-            <Input
-            id="confirmPassword"
-            label="Confirm password"
-            type="password"
-            register={register}
-            errors={errors}
-            disabled={isLoading}
-            required={true}
-          />
-          <div>
-            <Button disabled={isLoading} type="submit">
-                Log in
-            </Button>
-          </div>
-          </form>
-          :
-          
-          <form className="space-y-6">
-          <Input
-            id="email"
-            label="Email"
-            type="email"
-            register={register}
-            errors={errors}
-            disabled={isLoading}
-            required={true}
-          />
-
-          <Input
-            id="password"
-            label="Password"
-            type="password"
-            register={register}
-            errors={errors}
-            disabled={isLoading}
-            required={true}
-          />
-          <div>
-            <Button disabled={isLoading} type="submit">
-                Log in
-            </Button>
-          </div>
-          </form>
-          }
-
-
-
-
-
-        <div className="mt-6">
-            <div className="relative">
-                <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-gray-300"/>
-                </div>
-                <div className="relative flex justify-center text-sm">
-                    <span className="px-2 bg-white text-gray-500">
-                        Or continue with
-                    </span>
-                </div>
-            </div>
-
-            <div className="mt-6 flex gap-2">
-                {/* <AuthGoogleButton onClick={() => socialAction('google')}/> */}
-            </div>
-        </div>
-
-        <div className="flex gap-2 justify-center text-sm mt-6 px-2
-        text-gray-500">
-            <div>
-                {variant === 'LOGIN' ? 'Dont have an account?' : 'Do you already have an account?'}
-            </div>
-            <div onClick={toggleVariant} className="underline cursor-pointer">
-                {variant === 'LOGIN' ? 'Create an account' : 'Log in'}
-            </div>
-        </div>
+    <div>
+      {variant === "REGISTER" ? (<RegistrationForm />) : (<LogInForm />)}
+      
+      <div onClick={toggleVariant} className="underline cursor-pointer">
+        {variant === 'LOGIN' ? 'Create an account' : 'Log in'}
       </div>
     </div>
+
   )
 }
 
