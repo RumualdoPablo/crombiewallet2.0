@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { UserAuth } from "@/context/AuthContext";
 import Modal from "./Modal";
 import AuthForm from "./AuthForm";
+import { IconWallet } from "@tabler/icons-react";
 
 const Navbar = () => {
   const { user, logOut } = UserAuth();
@@ -25,7 +26,7 @@ const Navbar = () => {
   console.log(user);
 
   return (
-    <div className="h-20 w-full border-b-2 flex items-center justify-between p-2 text-black">
+    <nav className="h-20 w-full border-b-2 flex items-center justify-between p-2 text-black">
       <ul className="flex">
         <li className="p-2 cursor-pointer">
           <Link href="/">Home</Link>
@@ -39,11 +40,13 @@ const Navbar = () => {
           </li>
         )}
       </ul>
+
       <div className='flex gap-x-1 '>
       <IconWorld/>
         <Link href="/" locale='en' className='border-r-[2px] border-black pr-1'>English</Link>
         <Link href="/" locale='es' className=''>Español</Link>
       </div>
+      
       {!user ? (
         <div>
           <button type="button" onClick={toggleModal} className="text-white bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
@@ -56,14 +59,26 @@ const Navbar = () => {
         </div>
       ) : (
         <div>
-          <p>Welcome {user.email}</p>
-          <p onClick={hanldeSignOut} className="cursor-pointer">
-            Sign out
-          </p>
+          <div>
+            <p>Welcome {user.email}</p>
+          </div>
+          <button
+          type="button"
+          onClick={hanldeSignOut}
+          className="text-white bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+          >
+            Sign Out
+          </button>
         </div>
-      )}
-    </div>
-  );
-};
+      ) 
+      }
 
-export default Navbar;
+    <Modal toggleModal={toggleModal} isOpen={isOpen}>
+      <AuthForm />
+    </Modal>
+  </nav>
+);
+
+}
+
+export default Navbar

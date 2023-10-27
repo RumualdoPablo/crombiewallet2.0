@@ -11,7 +11,7 @@ function LoginPage() {
         password: "",
     });
 
-    const { signInUser, googleSignIn } = UserAuth();
+    const { signInUser } = UserAuth();
     const router = useRouter();
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
