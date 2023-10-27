@@ -7,13 +7,16 @@ import Button from "./Button"
 import axios from "axios"
 import { toast } from "react-hot-toast"
 // import { signIn, useSession } from 'next-auth/react'
+import { validateRegistrationForm } from "@/utils/RegisterFormValidations";
 import { useRouter } from "next/navigation"
+import { UserAuth } from "@/context/AuthContext"
 
 type Variant = "LOGIN" | "REGISTER"
 
 const AuthForm = () => {
   const [variant, setVariant] = useState<Variant>("LOGIN")
   const [isLoading, setIsLoading] = useState(false)
+  const { googleSignIn, registerUser } = UserAuth();
 
   const router = useRouter()
   // const session = useSession()
@@ -91,15 +94,26 @@ const AuthForm = () => {
   //   .finally(() => setIsLoading(false))
   // }
 
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    setIsLoading(true)
+    if (variant === "REGISTER") {
+      // const validationError = validateRegistrationForm(formData);
+      try {
+        await registerUser(formData)
+      } catch (error) {
+        
+      }
+    }
+  }
+
   return (
     <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div
         className="bg-white px-4 py-8 shadow
             sm:rounded-lg sm:px-10"
-      >{/*onSubmit=HandleSubmit(onSubmit) */}
 
         {variant === "REGISTER" ?
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
               <Input
               id="name"
               label="Name"
