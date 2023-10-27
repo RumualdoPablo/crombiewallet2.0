@@ -1,5 +1,6 @@
 "use client";
-import Link from "next/link";
+import Link from 'next-intl/link';
+import { IconWorld } from "@tabler/icons-react"
 import React, { useState } from "react";
 import { UserAuth } from "@/context/AuthContext";
 import Modal from "./Modal";
@@ -8,7 +9,6 @@ import AuthForm from "./AuthForm";
 const Navbar = () => {
   const { user, logOut } = UserAuth();
   const [isOpen, setIsOpen] = useState(false)
-
   const toggleModal = () => {
     setIsOpen(!isOpen)
   }
@@ -39,15 +39,12 @@ const Navbar = () => {
           </li>
         )}
       </ul>
+      <div className='flex gap-x-1 '>
+      <IconWorld/>
+        <Link href="/" locale='en' className='border-r-[2px] border-black pr-1'>English</Link>
+        <Link href="/" locale='es' className=''>Español</Link>
+      </div>
       {!user ? (
-        // <ul className="flex">
-        //   <li className="p-2 cursor-pointer">
-        //     <Link href="/login">Login</Link>
-        //   </li>
-        //   <li className="p-2 cursor-pointer">
-        //     <Link href="/register">Register</Link>
-        //   </li>
-        // </ul>
         <div>
           <button type="button" onClick={toggleModal} className="text-white bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
             Start
