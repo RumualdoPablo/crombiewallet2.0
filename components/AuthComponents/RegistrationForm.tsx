@@ -12,7 +12,7 @@ function Page() {
         email: "",
         password: "",
         confirmPassword: "",
-        profilePictureURL: "https://unavatar.io/reddit/kikobeats",
+        profilePictureURL: "",
     });
 
     const [error, setError] = useState("");
@@ -50,31 +50,23 @@ function Page() {
     };
 
     return (
-        <div className="container mx-auto flex justify-center items-center h-screen">
-            <div className="flex justify-center px-6 my-12 w-full">
-                <div className="w-full xl:w-3/4 lg:w-11/12 flex">
-                    <div className="w-full hidden lg:block lg:w-5/12">
-                        <Image
-                            className="rounded-l-lg"
-                            src="/register.png"
-                            alt="Register picture"
-                            width={800}
-                            height={500}
-                        />
+        <div className="">
+            <div className="">
+                <div className="">
+                    <div className="">
                     </div>
-                    <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
+                    <div className="">
                         <h3 className="pt-4 text-2xl text-center">Create an Account!</h3>
                         <form
                             onSubmit={handleSubmit}
-                            className="px-8 pt-6 pb-8 mb-4 rounded"
+                            className=""
                         >
-                            <div className="mb-4 md:flex md:justify-between">
-                                <div className="mb-4 md:mr-2 md:mb-0 w-60">
+                            <div className="flex flex-col gap-y-5 mb-5">
+                                <div className="flex flex-col">
                                     <label className="block mb-2 text-sm font-bold text-gray-700">
                                         Name
                                     </label>
                                     <input
-                                        className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id="name"
                                         type="text"
                                         placeholder="Name"
@@ -82,30 +74,30 @@ function Page() {
                                         value={formData.name}
                                         onChange={handleInputChange}
                                         required
+                                        className="border-[1.5px] rounded shadow-sm p-[3px] text-center"
                                     />
                                 </div>
-                                <div className="md:ml-2 w-60">
+                                <div className="flex flex-col">
                                     <label className="block mb-2 text-sm font-bold text-gray-700">
                                         Email
                                     </label>
                                     <input
-                                        className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         type="email"
                                         placeholder="Email"
                                         name="email"
                                         value={formData.email}
                                         onChange={handleInputChange}
                                         required
+                                        className="border-[1.5px] rounded shadow-sm p-[3px] text-center"
                                     />
                                 </div>
                             </div>
-                            <div className="mb-4 md:flex md:justify-between">
-                                <div className="mb-4 md:mr-2 md:mb-0 w-60">
+                            <div className="flex flex-col gap-y-5 mb-5">
+                                <div className="flex flex-col">
                                     <label className="block mb-2 text-sm font-bold text-gray-700">
                                         Password
                                     </label>
                                     <input
-                                        className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id="password"
                                         type="password"
                                         placeholder="Type your password"
@@ -113,48 +105,31 @@ function Page() {
                                         value={formData.password}
                                         onChange={handleInputChange}
                                         required
+                                        className="border-[1.5px] rounded shadow-sm p-[3px] text-center"
                                     />
                                 </div>
-                                <div className="md:ml-2">
+                                <div className="flex flex-col">
                                     <label className="block mb-2 text-sm font-bold text-gray-700 w-60">
                                         Confirm Password
                                     </label>
                                     <input
-                                        className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         type="password"
                                         placeholder="Confirm Password"
                                         name="confirmPassword"
                                         value={formData.confirmPassword}
                                         onChange={handleInputChange}
                                         required
+                                        className="border-[1.5px] rounded shadow-sm p-[3px] text-center"
                                     />
                                 </div>
                             </div>
                             {error && (
-                                <div className="text-red-500 mb-4 flex justify-center">
+                                <div className="text-red-500 mb-4 flex justify-center bg-red-100 rounded p-2 text-center">
                                     {error}
                                 </div>
                             )}
-                            <div className="mb-6 text-center flex justify-center gap-8">
+                            <div className="mt-8 flex flex-col gap-y-8">
                                 <Button type="submit">Register</Button>
-                                <Button onClick={handleSignIn}>Login with google</Button>
-                            </div>
-                            <hr className="mb-6 border-t" />
-                            <div className="text-center">
-                                <a
-                                    className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                                    href="#"
-                                >
-                                    Forgot Password?
-                                </a>
-                            </div>
-                            <div className="text-center">
-                                <a
-                                    className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                                    href="#"
-                                >
-                                    Already have an account? Login!
-                                </a>
                             </div>
                         </form>
                     </div>

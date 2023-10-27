@@ -17,6 +17,7 @@ const Navbar = () => {
   const hanldeSignOut = async () => {
     try {
       await logOut();
+      setIsOpen(false)
     } catch (error) {
       console.log(error);
     }
