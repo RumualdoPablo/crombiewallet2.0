@@ -51,7 +51,7 @@ const Profile = () => {
     <div className="text-white">
       <h1>Welcome, {userData?.name}</h1>
       <p>Email: {userData?.email}</p>
-      <Image src={userData?.profilePictureURL} alt="User Avatar" />
+      {/* <Image src={userData?.profilePictureURL} alt="User Avatar" /> */}
       <Expenses/>
     </div>
   );

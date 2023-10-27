@@ -29,31 +29,33 @@ function LoginPage() {
     };
 
     return (
-        <div className="container mx-auto flex justify-center items-center h-screen">
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Email:</label>
-                    <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Password:</label>
-                    <input
-                        type="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleInputChange}
-                        required
-                    />
-                </div>
-                <div>
+        <div className="h-fit">
+            <form onSubmit={handleSubmit} >
+                    <div className="flex flex-col gap-y-2 mb-2">
+                        <label>Email:</label>
+                        <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleInputChange}
+                            required
+                            className="border-[1.5px] rounded shadow-sm p-[3px]"
+                        />
+                    </div>
+                    <div className="flex flex-col gap-y-2 mb-2">
+                        <label>Password:</label>
+                        <input
+                            type="password"
+                            name="password"
+                            value={formData.password}
+                            onChange={handleInputChange}
+                            required
+                            className="border-[1.5px] rounded shadow-sm p-[3px]"
+                        />
+                    </div>
+                
+                <div className="mt-8 flex flex-col gap-y-8">
                     <Button type="submit">Login</Button>
-                    <Button onClick={googleSignIn}>Login with Google</Button>
                 </div>
             </form>
         </div>
