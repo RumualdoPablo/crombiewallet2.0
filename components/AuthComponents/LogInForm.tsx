@@ -32,7 +32,7 @@ function LoginPage() {
         <div className="h-fit">
             <form onSubmit={handleSubmit} >
                     <div className="flex flex-col gap-y-2 mb-2">
-                        <label>Email:</label>
+                        <label className="block mb-2 text-sm font-bold text-gray-700">Email:</label>
                         <input
                             type="email"
                             name="email"
@@ -43,7 +43,7 @@ function LoginPage() {
                         />
                     </div>
                     <div className="flex flex-col gap-y-2 mb-2">
-                        <label>Password:</label>
+                        <label className="block mb-2 text-sm font-bold text-gray-700">Password:</label>
                         <input
                             type="password"
                             name="password"
