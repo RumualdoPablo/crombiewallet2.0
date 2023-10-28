@@ -12,7 +12,7 @@ export default async function Page() {
   return (
     <main className="bg-slate-50 p-6 sm:p-10 min-h-screen">  
       <HeaderDashboard />
-      <TableDashboard expenses={/*expenses*/} incomes={/*incomes*/}/>
+      {/* <TableDashboard expenses={expenses} incomes={incomes}/> */}
     </main>
   )
 }
