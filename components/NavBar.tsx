@@ -28,14 +28,14 @@ const Navbar = () => {
 
   return (
     <nav className="h-20 w-full border-b-2 flex items-center justify-between p-2 text-black">
-      <div className='flex gap-x-2'>
-        <IconWallet />
-        <h1>CrombieWallet</h1>
+      <div className='flex gap-x-2 items-center'>
+        <IconWallet size={33}/>
+        <h1 className='text-xl font-bold dark-mode-font'>CrombieWallet</h1>
       </div>
 
       <div className='flex gap-x-4 items-center'>
         <ThemeSwitch/>
-        <div className='flex gap-x-1'>
+        <div className='flex gap-x-1 dark-mode-font'>
         <IconWorld />
         <Link href="/" locale='en' className='border-r-[2px] border-slate-300 pr-1'>English</Link>
         <Link href="/" locale='es' className=''>Español</Link>
