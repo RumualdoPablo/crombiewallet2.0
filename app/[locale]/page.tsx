@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl"
 import hero from "@/public/hero.json"
 import Lottie from "lottie-react"
 import ThemeSwitch from "@/components/ThemeSwitch"
-
+//Hola
 export default function Home() {
   const t = useTranslations("index")
   return (
