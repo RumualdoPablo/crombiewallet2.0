@@ -2,12 +2,13 @@
 import { useTranslations } from "next-intl"
 import hero from "@/public/hero.json"
 import Lottie from "lottie-react"
+import ThemeSwitch from "@/components/ThemeSwitch"
 
 export default function Home() {
   const t = useTranslations("index")
   return (
     <div className="flex min-h-screen flex-col items-center">
-      <section className="bg-white">
+      <section className="">
         <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 
           xl:gap-0 lg:py-16 lg:grid-cols-12">
           <div className="mr-auto place-self-center lg:col-span-7">
@@ -24,6 +25,7 @@ export default function Home() {
           <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
             <Lottie animationData={hero} />
           </div>
+          
         </div>
       </section>
     </div>

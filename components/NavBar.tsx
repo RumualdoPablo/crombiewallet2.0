@@ -6,6 +6,7 @@ import { UserAuth } from "@/context/AuthContext";
 import Modal from "./Modal";
 import AuthForm from "./AuthForm";
 import { IconWallet } from "@tabler/icons-react";
+import ThemeSwitch from './ThemeSwitch';
 
 const Navbar = () => {
   const { user, logOut } = UserAuth();
@@ -33,6 +34,7 @@ const Navbar = () => {
       </div>
 
       <div className='flex gap-x-4 items-center'>
+        <ThemeSwitch/>
         <div className='flex gap-x-1'>
         <IconWorld />
         <Link href="/" locale='en' className='border-r-[2px] border-slate-300 pr-1'>English</Link>

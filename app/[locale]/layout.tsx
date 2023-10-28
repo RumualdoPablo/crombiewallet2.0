@@ -1,4 +1,5 @@
 import './globals.css'
+import ThemeContext from '@/context/ThemeContext';
 import { AuthContextProvider } from '@/context/AuthContext'
 import { NextIntlClientProvider } from 'next-intl';
 // import { notFound } from 'next/navigation';
@@ -38,13 +39,15 @@ export default async function RootLayout({ children, params: { locale } }: RootL
   return (
     <html lang={locale}>
       <body className={inter.className}>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <AuthContextProvider>
-            <Navbar />
-            <ToasterAlert />
-            {children}
-          </AuthContextProvider>
-        </NextIntlClientProvider>
+        <ThemeContext>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <AuthContextProvider>
+              <Navbar />
+              <ToasterAlert />
+              {children}
+            </AuthContextProvider>
+          </NextIntlClientProvider>
+        </ThemeContext>
       </body>
     </html>
   );
