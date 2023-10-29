@@ -27,7 +27,7 @@ const Navbar = () => {
 
   return (
     <nav className="h-20 w-full border-b-2 flex items-center justify-between p-2 text-black">
-      <div className='flex items-center'>
+      <div className='flex items-center dark-mode-font'>
         <IconWallet size={33} />
         <h1 className='text-xl font-bold dark-mode-font'>CrombieWallet</h1>
       </div>
