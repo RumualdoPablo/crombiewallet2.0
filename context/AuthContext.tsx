@@ -11,7 +11,7 @@ import {
 } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
-import { AuthContextProps, UserData, RegisterForm } from "@/interfaces/RegisterForm";
+import { AuthContextProps, UserData, RegisterForm } from "@/interfaces/registerForm";
 import { auth, db } from "@/firebase";
 
 
