@@ -1,3 +1,4 @@
+"use client"
 import { useEffect } from 'react'
 import { useTheme } from 'next-themes'
 
@@ -10,7 +11,7 @@ const ThemeSwitch = () => {
             document.documentElement.style.color = '#fff'
             setTimeout(() => {
                 setTheme(newTheme)
-            }, 300); // transicion suave de 0.3s
+            }, 300); // transicion lenta de 0.3s
         } else {
             setTheme(newTheme)
         }
