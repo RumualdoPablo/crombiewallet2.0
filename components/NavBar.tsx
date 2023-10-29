@@ -48,7 +48,7 @@ const Navbar = () => {
             </button>
           </div>
         ) : (
-          <div className="flex items-center">
+          <div className="flex items-center dark-mode-font">
             <div>
               <p className="mr-2">Welcome {user.email}</p>
             </div>
