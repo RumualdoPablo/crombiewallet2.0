@@ -5,7 +5,7 @@ import { Title, Text } from "@tremor/react";
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { UserAuth } from "@/context/AuthContext";
-import { UserData } from "@/interfaces/registerForm";
+import { UserData } from "@/interfaces/RegisterForm";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/firebase";
 
