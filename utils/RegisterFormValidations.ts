@@ -1,4 +1,4 @@
-import { RegisterForm } from "@/interfaces/RegisterForm";
+import { RegisterForm } from "@/interfaces/registerForm";
 
 export function validateRegistrationForm(formData: RegisterForm) {
     if (

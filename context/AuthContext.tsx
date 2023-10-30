@@ -11,8 +11,8 @@ import {
 } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
-import { AuthContextProps, UserData, RegisterForm } from "@/interfaces/RegisterForm";
 import { auth, db } from "@/firebase";
+import { AuthContextProps, RegisterForm, UserData } from "@/interfaces/registerForm";
 
 
 export const AuthContext = createContext<AuthContextProps | null>(null);
@@ -41,11 +41,12 @@ export const AuthContextProvider = ({
           email: userCredential.user.email,
           profilePictureURL: userCredential.user.photoURL,
           expenses: [],
+          income:[]
         };
         await setDoc(userDocRef, userData);
       }
 
-      router.push(`/profile/${userCredential.user.uid}`);
+      router.push(`/dashboard/${userCredential.user.uid}`);
     } catch (error) {
       console.error("Error signing in with Google:", error);
     }
@@ -70,7 +71,7 @@ export const AuthContextProvider = ({
       };
       await setDoc(userDocRef, userData);
 
-      router.push(`/profile/${userCredential.user.uid}`);
+      router.push(`/dashboard/${userCredential.user.uid}`);
     } catch (error) {
       console.error("Error registering user:", error);
       throw error;
@@ -86,7 +87,7 @@ export const AuthContextProvider = ({
       );
 
       console.log("User signed in successfully:", userCredential.user);
-      router.push(`/profile/${userCredential.user.uid}`);
+      router.push(`/dashboard/${userCredential.user.uid}`);
     } catch (error) {
       console.error("Error signing in:", error);
       throw error;
