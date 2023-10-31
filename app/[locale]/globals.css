@@ -125,3 +125,14 @@ header div{
     transform: rotateY(0deg);
   }
 }
+
+/* Define la animación de desplazamiento "right2left_20s_linear_infinite" */
+@keyframes right2left {
+  0% {
+    transform: translateX(100%); /* Inicio - mueve el contenido hacia la derecha */
+  }
+  100% {
+    transform: translateX(-100%); /* Fin - mueve el contenido hacia la izquierda */
+  }
+}
+

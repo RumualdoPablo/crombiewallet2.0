@@ -28,19 +28,13 @@ export default function Home() {
         </div>
       </section>
       <div className="w-1/2 grid grid-cols-2 items-center mb-24">
-        <Cards text={t(`cards.1`)}/>
-        <Cards text={t(`cards.2`)}/>
-        <Cards text="Como va"/>
-        <Cards text="xd"/>
+        <Cards text={t("cards.1")} />
+        <Cards text={t("cards.2")} />
+        <Cards text="Como va" />
+        <Cards text="xd" />
       </div>
-      {/* <section className="flex gap-x-52">
-        <div className="rounded p-2 flex flex-col items-center shadow-md shadow-black">
-          <Icon24Hours size={55} />
-          <p>Atención las 24h</p>
-          </div>
-        <div><IconAbacus size={55} /> </div>
-        <div><IconCoin size={55} /></div>
-      </section> */}
+
+
     </div>
   )
 }

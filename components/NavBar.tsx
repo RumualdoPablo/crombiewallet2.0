@@ -39,8 +39,8 @@ const Navbar = () => {
         <ThemeSwitch />
         <div className='flex gap-x-1 dark-mode-font items-center'>
           <IconWorld />
-          <Link href="/" locale='en' className='border-r-[2px] border-slate-300 pr-1'>English</Link>
-          <Link href="/" locale='es' className=''>Español</Link>
+          <Link href="/" locale='en' className='border-r-[2px] border-slate-300 pr-1'>En</Link>
+          <Link href="/" locale='es' className=''>Es</Link>
         </div>
 
         {!user ? (
