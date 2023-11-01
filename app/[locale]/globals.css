@@ -42,7 +42,7 @@ header div{
   border-radius: 2%;
   height: 300px;
   transform-style: preserve-3d;
-  transition: transform 1s ease 0s;
+  transition: transform 0.3s ease 0s;
   width: 100%;
   -webkit-animation: giro 1s 1;
   animation: giro 1s 1;
