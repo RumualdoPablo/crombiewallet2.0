@@ -19,6 +19,7 @@ const CreateForm = ({ toggleModal, formType }: CreateFormProp) => {
     defaultValues: {
       description: "",
       amount: 0,
+      category: "",
     },
   });
   const router = useRouter();
@@ -38,6 +39,7 @@ const CreateForm = ({ toggleModal, formType }: CreateFormProp) => {
         amount: parseFloat(data.amount),
         date: currentDate,
         tag: tag,
+        category: data.category,
       };
 
       const updatedItems =
@@ -103,6 +105,26 @@ const CreateForm = ({ toggleModal, formType }: CreateFormProp) => {
           >
             Total Cost
           </label>
+        </div>
+
+        <div className="relative z-0 w-full mb-6 group">
+          <select
+            {...register("category", { required: true })}
+            className="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 
+            border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            required
+          >
+            <option value="">Select Category</option>
+            <option value="Hogar">Hogar</option>
+            <option value="Comida">Comida</option>
+            <option value="Cuentas y pagos">Cuentas y pagos</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Ropa">Ropa</option>
+            <option value="Salud e Higiene">Salud e Higiene</option>
+            <option value="Compras">Compras</option>
+            <option value="Ocio">Ocio</option>
+            <option value="Otros">Otros</option>
+          </select>
         </div>
 
         <button
