@@ -3,10 +3,31 @@ import { useTranslations } from "next-intl"
 import hero from "@/public/hero.json"
 import Lottie from "lottie-react"
 import Cards from "@/components/LandingComponents/Cards"
-import MoneyCarousel from "@/components/MoneyCarousel"
+// import MoneyCarousel from "@/components/MoneyCarousel"
 
 export default function Home() {
+
   const t = useTranslations("index")
+
+  const cardArray = [
+    {
+      id: 1,
+      text: t("cards.1"),
+      image: "./servicio-al-cliente.svg"
+    }, {
+      id: 2,
+      text: t("cards.2"),
+      image: "./estadisticas.svg"
+    }, {
+      id: 3,
+      text: t("cards.3"),
+      image: "./hucha.svg"
+    }, {
+      id: 4,
+      text: t("cards.4"),
+      image: "./finanzas.svg"
+    }]
+
   return (
     <div className="flex min-h-screen flex-col items-center">
       <section className="">
@@ -29,13 +50,10 @@ export default function Home() {
         </div>
       </section>
       <div className="w-1/2 grid grid-cols-2 items-center mb-24">
-        <Cards text={t("cards.1")} />
-        <Cards text={t("cards.2")} />
-        <Cards text="Como va" />
-        <Cards text="xd" />
+        {cardArray.map((card) => (
+          <Cards key={card.id} text={card.text} image={card.image}/>
+        ))}
       </div>
-
-      <MoneyCarousel/>
     </div>
   )
 }
