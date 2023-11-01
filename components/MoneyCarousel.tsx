@@ -2,8 +2,7 @@ import React from 'react'
 
 const MoneyCarousel = () => {
     return (
-        <div>
-            <article className="w-full space-y-8 relative">
+            <div className="w-full space-y-8 relative">
                 <div className="flex gap-6">
                     <div className=" relative flex overflow-hidden w-full no-scrollbar">
                         <div className=" animate-[right2left_20s_linear_infinite] whitespace-nowrap items-center flex">
@@ -15,7 +14,7 @@ const MoneyCarousel = () => {
                         </div>
                     </div>
                 </div>
-            </article></div>
+            </div>
     )
 }
 

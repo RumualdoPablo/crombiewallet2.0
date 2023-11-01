@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl"
 import hero from "@/public/hero.json"
 import Lottie from "lottie-react"
 import Cards from "@/components/LandingComponents/Cards"
+import MoneyCarousel from "@/components/MoneyCarousel"
 
 export default function Home() {
   const t = useTranslations("index")
@@ -34,7 +35,7 @@ export default function Home() {
         <Cards text="xd" />
       </div>
 
-
+      <MoneyCarousel/>
     </div>
   )
 }
