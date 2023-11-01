@@ -1,7 +1,6 @@
 import { TableCell, TableRow, Text, BadgeDelta, Table, TableHead, TableHeaderCell, TableBody } from "@tremor/react"
-import { IncomeProps } from "@/types"
 
-const TableRegisters: React.FC<IncomeProps> = ({
+const TableRegisters: React.FC<any> = ({
   deltaType,
   data,
 }) => {
