@@ -2,7 +2,7 @@
 import { useTranslations } from "next-intl"
 import hero from "@/public/hero.json"
 import Lottie from "lottie-react"
-import ThemeSwitch from "@/components/ThemeSwitch"
+import Cards from "@/components/LandingComponents/Cards"
 
 export default function Home() {
   const t = useTranslations("index")
@@ -25,9 +25,16 @@ export default function Home() {
           <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
             <Lottie animationData={hero} />
           </div>
-          
         </div>
       </section>
+      <div className="w-1/2 grid grid-cols-2 items-center mb-24">
+        <Cards text={t("cards.1")} />
+        <Cards text={t("cards.2")} />
+        <Cards text="Como va" />
+        <Cards text="xd" />
+      </div>
+
+
     </div>
   )
 }

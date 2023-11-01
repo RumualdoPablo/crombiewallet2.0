@@ -2,6 +2,10 @@
     "index": {
         "landing-title": "Registra tus movimientos financieros con facilidad",
         "landing-subtitle":"Administra tu dinero sabiamente y alcanza tus objetivos financieros",
-        "log-button":"Empezar"
+        "log-button":"Empezar",
+        "cards":{
+            "1": "Crea tu cuenta con tan solo un par de clicks, Asegurandote que tu viaje financiero comience sin dificultades.",
+            "2": "Cambia de divisas como si nada, manteniendote al dia con las tendencias financieras."
+        }
     }
 }
