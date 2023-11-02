@@ -5,6 +5,7 @@ const TableRegisters: React.FC<any> = ({
   data,
 }) => {
 
+  
   return (
     <>
       <Table>

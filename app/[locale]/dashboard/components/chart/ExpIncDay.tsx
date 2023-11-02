@@ -1,86 +1,43 @@
 import { DataProps } from "@/types";
 import { Card, Title, LineChart, ValueFormatter } from "@tremor/react";
-import { getFormattedMonth, getFormattedDay, updateResult } from "./DataFunctions";
 
 interface Entry {
   createdAt: string | number | Date;
   amount: number;
+  date: any;
 }
 
-type Data = { [month: string]: { [day: string]: number } };
-
 const ExpIncDay: React.FC<DataProps> = ({ expenses, incomes }) => {
-  
-  const createChartData = ( expenseEntry: any, incomeEntry: any) => {
-    
-    const mergedData: any[] = [];
-    expenseEntry.dias.forEach((day: any) => {
-      mergedData.push({
-        mes: expenseEntry.mes.toLocaleUpperCase(),
-        dia: day.dia,
-        Gastos: day.Gastos,
-        Ingresos: 0,
-      });
+  // Function to calculate total expenses and incomes for each day
+  const calculateChartData = () => {
+    const chartData: { [day: string]: { Expenses: number; Incomes: number } } = {};
+
+    // Calculate total expenses for each day
+    expenses.forEach((expense: Entry) => {
+      const date = expense.date.toDate().toLocaleString();
+      chartData[date] = chartData[date] || { Expenses: 0, Incomes: 0 };
+      chartData[date].Expenses += expense.amount;
     });
 
-    incomeEntry?.dias.forEach((incomeDay: any) => {
-      const existingData = mergedData.find(
-        (data) => data.dia === incomeDay.dia
-      );
-      if (existingData) {
-        existingData.Ingresos = incomeDay.Ingresos;
-      } else {
-        mergedData.push({
-          mes: expenseEntry.mes.toLocaleUpperCase(),
-          dia: incomeDay.dia,
-          Gastos: 0,
-          Ingresos: incomeDay.Ingresos,
-        });
-      }
+    // Calculate total incomes for each day
+    incomes.forEach((income: Entry) => {
+      const date = new Date(income.createdAt).toLocaleDateString();
+      chartData[date] = chartData[date] || { Expenses: 0, Incomes: 0 };
+      chartData[date].Incomes += income.amount;
     });
 
-    return mergedData;
-  };
-
-  const calculateData = (entries: Entry[] | undefined, type: string) => {
-    const result: Data = {};
-
-    entries?.forEach((entry) => {
-      const createdAt = new Date(entry.createdAt)
-      const month = getFormattedMonth(createdAt)
-      const day = getFormattedDay(createdAt)
-      const amount = entry.amount
-
-      updateResult(result, month, day, amount)
-    })
-
-    return Object.keys(result).map((month) => ({
-      mes: month,
-      dias: Object.keys(result[month]).map((day) => ({
-        dia: day,
-        [type]: result[month][day],
-      })),
+    return Object.keys(chartData).map((day) => ({
+      dia: day,
+      Expenses: chartData[day].Expenses,
+      Incomes: chartData[day].Incomes,
     }));
   };
 
-  const expenseData = calculateData(expenses, "Expenses");
-  const incomeData = calculateData(incomes, "Incomes");
-
-  console.log(expenseData,incomeData);
-  
-  const chartData = expenseData.map((expenseEntry) => {
-
-      const incomeEntry = incomeData.find(
-        (income) => income.mes === expenseEntry.mes
-      )
-
-      const mergedData = createChartData(expenseEntry, incomeEntry)
-      return mergedData
-    }).flat()
+  const chartData = calculateChartData();
 
   const dataFormatter: ValueFormatter = (number: number) => {
-    return "$" + Intl.NumberFormat("its").format(number).toString() ;
-  }
+    return "$" + Intl.NumberFormat("its").format(number).toString();
+  };
 
   return (
     <Card>

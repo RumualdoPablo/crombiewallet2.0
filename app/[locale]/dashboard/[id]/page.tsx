@@ -46,15 +46,39 @@ const Profile = () => {
 
 //   if (!userData) {
 //     return <div>Loading...</div>;
-//   }
+//   
+
+const [expenses, setExpenses] = useState([]);
+const [incomes, setIncomes] = useState([]);
+const { user } = UserAuth();
+const [loading, setLoading] = useState(true);
+
+useEffect(() => {
+  const fetchUserData = async () => {
+    if (user) {
+      const userDocRef = doc(db, "users", user.uid);
+      const docSnapshot = await getDoc(userDocRef);
+      if (docSnapshot.exists()) {
+        const userData = docSnapshot.data();
+        setExpenses(userData?.expenses || []);
+        setIncomes(userData?.income || []);
+      }
+      setLoading(false);
+    }
+  };
+
+  fetchUserData();
+}, [user]);
+
+if (loading) {
+  return <div>Loading...</div>;
+}
+
 
   return (
     <div className="">
-      {/* <h1>Welcome, {userData?.name}</h1>
-      <p>Email: {userData?.email}</p> */}
-      {/* <Image src={userData?.profilePictureURL} alt="User Avatar" /> */}
       <HeaderDashboard />
-      <TableDashboard/>
+      <TableDashboard expenses={expenses} incomes={incomes}/>
     </div>
   );
 };

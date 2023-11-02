@@ -10,6 +10,7 @@ const LastRegisters: React.FC<DataProps> = ({ expenses, incomes }) => {
   const incomeList: Income[] = incomes || []
   const transactions = [...expenseList, ...incomeList]
 
+
   return (
     <Table>
       <TableHead>
@@ -24,7 +25,7 @@ const LastRegisters: React.FC<DataProps> = ({ expenses, incomes }) => {
           <TableRow key={data.id}>
             <TableCell>{data.description}</TableCell>
             <TableCell>
-              <Text>{data.createdAt.toDateString()}</Text>
+              <Text>{data.date.toDate().toLocaleString()}</Text>
             </TableCell>
             <TableCell>
               {data.amount}
