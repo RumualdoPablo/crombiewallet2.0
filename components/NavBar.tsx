@@ -30,9 +30,9 @@ const Navbar = () => {
 
   return (
     <nav className="h-20 w-full border-b-2 flex items-center justify-between p-2 text-black">
-      <div className='flex items-center dark-mode-font'>
+      <div className='flex items-center dark-mode-font ml-5'>
         <IconWallet size={33} />
-        <h1 className='text-xl font-bold dark-mode-font'>CrombieWallet</h1>
+        <h1 className='text-xl font-semibold dark-mode-font'>CrombieWallet</h1>
       </div>
 
       <div className='flex gap-x-4 items-center'>
@@ -52,9 +52,6 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="flex items-center dark-mode-font">
-            <div>
-              <p className="mr-2">Welcome {user.email}</p>
-            </div>
             <button
               type="button"
               onClick={hanldeSignOut}
