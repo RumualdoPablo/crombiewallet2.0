@@ -71,17 +71,17 @@ header div{
 }
 
 .cardBox:nth-child(1) .card .front {
-  background-color: cornflowerblue;
+  background-color: #773a9d;
 }
 
 .cardBox:nth-child(2) .card .front {
-  background-color: orange;
+  background-color: #f5ba4c;
 }
 .cardBox:nth-child(3) .card .front {
-  background-color: yellowgreen;
+  background-color: #e1476d;
 }
 .cardBox:nth-child(4) .card .front {
-  background-color: tomato;
+  background-color: #58b869;
 }
 
 .cardBox:nth-child(2) .card {
