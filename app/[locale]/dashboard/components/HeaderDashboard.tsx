@@ -5,7 +5,7 @@ import { Title, Text } from "@tremor/react";
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { UserAuth } from "@/context/AuthContext";
-import { UserData } from "@/interfaces/RegisterForm";
+import { UserData } from "@/interfaces/registerForm";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/firebase";
 
@@ -46,23 +46,13 @@ const HeaderDashboard = () => {
   return (
     <header className="flex items-center justify-between w-full">
       <div className="flex-col items-start">
-        <Title className="flex gap-2 items-center">
-          <IconWallet />
-          <span>CrombieWallet</span>
-        </Title>
-        <Text className="text-xs mt-2">MANAGE YOUR MONTHLY EXPENSES</Text>
+        <Text className="text-base mt-2">MANAGE YOUR MONTHLY EXPENSES</Text>
       </div>
 
       <div>
         <IconUser />
         <h1>Welcome, {userData?.name}</h1>
         <p>Email: {userData?.email}</p>
-        {/* <IconLogout
-          onClick={() => signOut()}
-          className="cursor-pointer rounded p-1 
-            hover:bg-white"
-          size={32}
-        /> */}
       </div>
     </header>
   );
