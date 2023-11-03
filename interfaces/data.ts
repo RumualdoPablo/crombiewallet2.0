@@ -22,7 +22,7 @@ export interface incomes {
 export interface DataProps {
     expenses: expenses[] | undefined;
     incomes: incomes[] | undefined;
-    texts: any
+    texts?: any
 }
 
 export interface IncomeProps {
