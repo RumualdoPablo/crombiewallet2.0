@@ -1,21 +1,23 @@
 {
     "index": {
         "landing-title": "Registra tus movimientos financieros con facilidad",
-        "landing-subtitle":"Administra tu dinero sabiamente y alcanza tus objetivos financieros",
-        "log-button":"Empezar",
-        "cards":{
+        "landing-subtitle": "Administra tu dinero sabiamente y alcanza tus objetivos financieros",
+        "log-button": "Empezar",
+        "cards": {
             "1": "Crea tu cuenta con tan solo un par de clicks, Asegurandote que tu viaje financiero comience sin dificultades.",
-            "2": "Cambia de divisas como si nada, manteniendote al dia con las tendencias financieras."
+            "2": "Cambia de divisas como si nada, manteniendote al dia con las tendencias financieras.",
+            "3": "Cambiar entre español e inglés de manera fluida, haciendo que la aplicación sea accesible para todos.",
+            "4": "Visualiza tus tendencias de gasto y de moneda a través de gráficos y gráficos interactivos."
         }
     },
-    "dashboard":{
+    "dashboard": {
         "header": {
             "title": "ADMINISTRA TUS FINANZAS MENSUALES",
             "welcome": "Bienvenido"
         },
         "tabs": {
             "home": {
-                "title":"PANEL PRINCIPAL",
+                "title": "PANEL PRINCIPAL",
                 "card-circle": "GASTOS/INGRESOS POR MES",
                 "card-lines": "GASTOS/INGRESOS POR MES"
             },
