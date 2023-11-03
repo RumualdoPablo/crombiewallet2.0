@@ -11,7 +11,12 @@
     "dashboard":{
         "tabs": {
             "home": "PANEL PRINCIPAL",
-            "transactions": "HISTORIAL"
+            "transactions": {
+                "title": "HISTORIAL",
+                "description": "DESCRIPCION",
+                "date": "date",
+                "total": "TOTAL"
+            }
         },
         "balance": "Balance",
         "income": "Ingresos",

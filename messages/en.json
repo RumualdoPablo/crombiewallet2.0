@@ -13,7 +13,12 @@
     "dashboard": {
         "tabs": {
             "home": "HOME",
-            "transactions": "TRANSACTIONS"
+            "transactions": {
+                "title": "TRANSACTIONS",
+                "description": "description",
+                "date": "date",
+                "total": "total"
+            }
         },
         "balance": "Balance",
         "income": "Incomes",
