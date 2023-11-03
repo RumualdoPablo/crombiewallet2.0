@@ -20,7 +20,7 @@ const TableDashboard: React.FC<DataProps> = ({ expenses, incomes }) => {
         onValueChange={(value) => setSelectedView(value)}
         className="mt-6"
       >
-        <Tab value="1" text={t("tabs.home")} className="ml-7"/>
+        <Tab value="1" text={t("tabs.home.title")} className="ml-7"/>
         <Tab value="2" text={t("tabs.transactions.title")} className="ml-4" />
       </TabList>
 
@@ -34,12 +34,12 @@ const TableDashboard: React.FC<DataProps> = ({ expenses, incomes }) => {
             </Card>
             <Card>
               <div className="h-auto">
-                <ExpIncMonth expenses={expenses} incomes={incomes} />
+                <ExpIncMonth expenses={expenses} incomes={incomes} texts={t} />
               </div>
             </Card>
             <Card>
               <div className="h-auto">
-                <ExpIncDay expenses={expenses} incomes={incomes} />
+                <ExpIncDay expenses={expenses} incomes={incomes} texts={t} />
               </div>
             </Card>
           </Grid>

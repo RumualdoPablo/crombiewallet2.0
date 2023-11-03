@@ -1,7 +1,7 @@
 import { DataProps } from "@/types"
 import { Card, Title, BarChart, ValueFormatter } from "@tremor/react"
 
-const ExpIncMonth: React.FC<DataProps> = ({ expenses, incomes }) => {
+const ExpIncMonth: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
 
   const calculateData = (entries: any[] | undefined, type: string) => {
     const result: { [month: string]: number } = {}
@@ -39,7 +39,7 @@ const ExpIncMonth: React.FC<DataProps> = ({ expenses, incomes }) => {
 
   return (
     <Card className="p-4">
-      <Title className="text-sm text-center font-bold">EXPENSES/INCOMES PER MONTH</Title>
+      <Title className="text-sm text-center font-bold">{texts("tabs.home.card-circle")}</Title>
       <BarChart
         className="mt-6"
         data={chartData}

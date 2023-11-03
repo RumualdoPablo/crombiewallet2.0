@@ -8,12 +8,13 @@ import { UserAuth } from "@/context/AuthContext";
 import { UserData } from "@/interfaces/registerForm";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/firebase";
+import { useTranslations } from "next-intl";
 
 const HeaderDashboard = () => {
   const { id } = useParams();
   const { user } = UserAuth();
   const [userData, setUserData] = useState<UserData | null>(null);
-
+  const t = useTranslations("dashboard")
   const router = useRouter();
 
   // useEffect(() => {
@@ -41,18 +42,17 @@ const HeaderDashboard = () => {
     };
 
     fetchUserData();
-  }, [id]);
+  }, [user?.uid]);
 
   return (
     <header className="flex items-center justify-between w-full">
       <div className="flex-col items-start">
-        <Text className="text-base mt-2">MANAGE YOUR MONTHLY EXPENSES</Text>
+        <Text className="text-base mt-2">{t("header.title")}</Text>
       </div>
 
       <div>
         <IconUser />
-        <h1>Welcome, {userData?.name}</h1>
-        <p>Email: {userData?.email}</p>
+        <p>{t("header.welcome")}, {userData?.name}</p>
       </div>
     </header>
   );

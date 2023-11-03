@@ -9,21 +9,24 @@ import { IconWallet } from "@tabler/icons-react";
 import ThemeSwitch from './ThemeSwitch';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next-intl/client';
+import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
   const { user, logOut } = UserAuth();
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname()
   const t = useTranslations("index")
+  const router = useRouter()
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
 
-  const hanldeSignOut = async () => {
+  const handleSignOut = async () => {
     try {
       logOut();
       setIsOpen(false);
+      router.push("/")
     } catch (error) {
       console.log(error);
     }
@@ -55,7 +58,7 @@ const Navbar = () => {
           <div className="flex items-center dark-mode-font">
             <button
               type="button"
-              onClick={hanldeSignOut}
+              onClick={handleSignOut}
               className="text-white bg-red-600 active:bg-red-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center "
             >
               Sign Out

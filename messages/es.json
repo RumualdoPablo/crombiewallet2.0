@@ -9,8 +9,16 @@
         }
     },
     "dashboard":{
+        "header": {
+            "title": "ADMINISTRA TUS FINANZAS MENSUALES",
+            "welcome": "Bienvenido"
+        },
         "tabs": {
-            "home": "PANEL PRINCIPAL",
+            "home": {
+                "title":"PANEL PRINCIPAL",
+                "card-circle": "GASTOS/INGRESOS POR MES",
+                "card-lines": "GASTOS/INGRESOS POR MES"
+            },
             "transactions": {
                 "title": "HISTORIAL",
                 "description": "DESCRIPCION",

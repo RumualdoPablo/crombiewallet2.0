@@ -11,13 +11,21 @@
         }
     },
     "dashboard": {
+        "header": {
+            "title": "MANAGE YOUR MONTHLY EXPENSES",
+            "welcome": "Welcome"
+        },
         "tabs": {
-            "home": "HOME",
+            "home": {
+                "title":"HOME",
+                "card-circle": "EXPENSES/INCOMES PER MONTH",
+                "card-lines": "EXPENSES/INCOMES PER DAY"
+            },
             "transactions": {
                 "title": "TRANSACTIONS",
-                "description": "description",
-                "date": "date",
-                "total": "total"
+                "description": "DESCRIPTION",
+                "date": "DATE",
+                "total": "TOTAL"
             }
         },
         "balance": "Balance",

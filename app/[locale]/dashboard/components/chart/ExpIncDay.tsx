@@ -7,7 +7,7 @@ interface Entry {
   date: any;
 }
 
-const ExpIncDay: React.FC<DataProps> = ({ expenses, incomes }) => {
+const ExpIncDay: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
   // Function to calculate total expenses and incomes for each day
   const calculateChartData = () => {
     const chartData: { [day: string]: { Expenses: number; Incomes: number } } = {};
@@ -42,7 +42,7 @@ const ExpIncDay: React.FC<DataProps> = ({ expenses, incomes }) => {
   return (
     <Card>
       <Title className="text-sm text-center font-bold uppercase">
-        EXPENSES/INCOMES PER DAY 
+      {texts("tabs.home.card-circle")}
       </Title>
       <LineChart
         className="mt-6"
