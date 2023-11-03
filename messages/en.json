@@ -9,5 +9,10 @@
             "3": "Switch between Spanish and English seamlessly, making the app accessible for everyone.",
             "4": "Visualize your spending and currency trends through interactive charts and graphs"
         }
+    },
+    "dashboard":{
+        "balance": "Balance",
+        "income": "Incomes",
+        "expense": "Expenses"
     }
 }

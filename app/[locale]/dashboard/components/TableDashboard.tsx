@@ -2,6 +2,7 @@
 
 import { TabList, Grid, Card, Tab } from "@tremor/react"
 import { useState } from "react"
+import { useTranslations } from "next-intl"
 import ExpIncMonth from "./chart/ExpIncMonth"
 import ExpIncDay from "./chart/ExpIncDay"
 import Total from "./chart/Total"
@@ -10,7 +11,8 @@ import { DataProps } from "@/interfaces/data";
 
 const TableDashboard: React.FC<DataProps> = ({ expenses, incomes }) => {
   const [selectedView, setSelectedView] = useState("1")
-
+  const t = useTranslations("dashboard")
+  
   return (
     <>
       <TabList
@@ -27,7 +29,7 @@ const TableDashboard: React.FC<DataProps> = ({ expenses, incomes }) => {
           <Grid numColsLg={3} className="mt-6 gap-6">
             <Card>
               <div className="h-auto">
-                <Total expenses={expenses} incomes={incomes} />
+                <Total expenses={expenses} incomes={incomes} texts={t}/>
               </div>
             </Card>
             <Card>

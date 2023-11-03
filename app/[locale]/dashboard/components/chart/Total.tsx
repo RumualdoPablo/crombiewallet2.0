@@ -13,8 +13,7 @@ import {
 } from "@tremor/react";
 import React, { useState } from "react";
 
-
-const Total: React.FC<DataProps> = ({ expenses, incomes }) => {
+const Total: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
   const [selectedView, setSelectedView] = useState("1");
 
   const [isExpenseModalOpen, setExpenseModalOpen] = useState(false);
@@ -45,7 +44,7 @@ const Total: React.FC<DataProps> = ({ expenses, incomes }) => {
       >
         <Flex alignItems="start">
           <Title className=" text-m text-center font-semibold flex items-center justify-between">
-            Balance
+            {texts("balance")}
           </Title>
           <BadgeDelta deltaType={balance > 0 ? "increase" : "decrease"} />
         </Flex>
@@ -55,7 +54,7 @@ const Total: React.FC<DataProps> = ({ expenses, incomes }) => {
           className="truncate space-x-3"
         >
           <Metric className={balance > 0 ? "text-green-400" : "text-red-400"}>
-            {balance} €
+            $ {balance}
           </Metric>
         </Flex>
       </Card>
@@ -67,7 +66,7 @@ const Total: React.FC<DataProps> = ({ expenses, incomes }) => {
       >
         <Flex alignItems="start">
           <Title className="text-m text-center font-semibold flex items-center justify-between">
-            Incomes
+            {texts("income")}
             <IconSquarePlus
               className="cursor-pointer p-1 rounded hover:bg-slate-50"
               onClick={toggleIncomeModal}
@@ -81,7 +80,7 @@ const Total: React.FC<DataProps> = ({ expenses, incomes }) => {
           alignItems="baseline"
           className="truncate space-x-3"
         >
-          <Metric className="text-green-400">{totalIncomes} €</Metric>
+          <Metric className="text-green-400">$ {totalIncomes}</Metric>
         </Flex>
         <Modal toggleModal={toggleIncomeModal} isOpen={isIncomeModalOpen}>
           <CreateForm toggleModal={toggleIncomeModal} formType={"income"} />
@@ -95,7 +94,7 @@ const Total: React.FC<DataProps> = ({ expenses, incomes }) => {
       >
         <Flex alignItems="start">
           <Title className="text-m text-center font-semibold flex items-center justify-between">
-            Expenses
+          {texts("expense")}
             <IconSquarePlus
               className="cursor-pointer p-1 rounded hover:bg-slate-50"
               onClick={toggleExpenseModal}
@@ -109,7 +108,7 @@ const Total: React.FC<DataProps> = ({ expenses, incomes }) => {
           alignItems="baseline"
           className="truncate space-x-3"
         >
-          <Metric className="text-red-400">{totalExpenses} €</Metric>
+          <Metric className="text-red-400">$ {totalExpenses}</Metric>
         </Flex>
         <Modal toggleModal={toggleExpenseModal} isOpen={isExpenseModalOpen}>
           <CreateForm toggleModal={toggleExpenseModal} formType={"expense"} />
