@@ -9,6 +9,10 @@
         }
     },
     "dashboard":{
+        "tabs": {
+            "home": "PANEL PRINCIPAL",
+            "transactions": "HISTORIAL"
+        },
         "balance": "Balance",
         "income": "Ingresos",
         "expense": "Gastos"

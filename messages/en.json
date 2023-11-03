@@ -2,15 +2,19 @@
     "index": {
         "landing-title": "Control your household expenses with ease",
         "landing-subtitle": "Manage your money wisely and reach your financial goals.",
-        "log-button":"Start",
-        "cards":{
+        "log-button": "Start",
+        "cards": {
             "1": "Sign up effortlessly with just a few clicks, ensuring your financial journey starts smoothly.",
             "2": "Seamlessly convert currency, keeping you updated on global financial trends.",
             "3": "Switch between Spanish and English seamlessly, making the app accessible for everyone.",
             "4": "Visualize your spending and currency trends through interactive charts and graphs"
         }
     },
-    "dashboard":{
+    "dashboard": {
+        "tabs": {
+            "home": "HOME",
+            "transactions": "TRANSACTIONS"
+        },
         "balance": "Balance",
         "income": "Incomes",
         "expense": "Expenses"

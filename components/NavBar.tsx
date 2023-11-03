@@ -8,11 +8,12 @@ import AuthForm from "./AuthForm";
 import { IconWallet } from "@tabler/icons-react";
 import ThemeSwitch from './ThemeSwitch';
 import { useTranslations } from 'next-intl';
+import { usePathname } from 'next-intl/client';
 
 const Navbar = () => {
   const { user, logOut } = UserAuth();
   const [isOpen, setIsOpen] = useState(false);
-  
+  const pathname = usePathname()
   const t = useTranslations("index")
 
   const toggleModal = () => {
@@ -39,8 +40,8 @@ const Navbar = () => {
         <ThemeSwitch />
         <div className='flex gap-x-1 dark-mode-font items-center'>
           <IconWorld />
-          <Link href="/" locale='en' className='border-r-[2px] border-slate-300 pr-1'>En</Link>
-          <Link href="/" locale='es' className=''>Es</Link>
+          <Link href={pathname} locale='en' className='border-r-[2px] border-slate-300 pr-1'>En</Link>
+          <Link href={pathname} locale='es' className=''>Es</Link>
         </div>
 
         {!user ? (
