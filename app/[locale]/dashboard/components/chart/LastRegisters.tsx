@@ -4,7 +4,7 @@ import { Text, Table, TableHead, TableRow,
     TableHeaderCell, TableBody, 
     TableCell, BadgeDelta } from "@tremor/react"
 
-const LastRegisters: React.FC<DataProps> = ({ expenses, incomes }) => {
+const LastRegisters: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
   
   //Lo mismo para este tipado, no deberia estar con prisma
   const expenseList: Expense[] = expenses || []
@@ -16,9 +16,9 @@ const LastRegisters: React.FC<DataProps> = ({ expenses, incomes }) => {
     <Table>
       <TableHead>
         <TableRow>
-          <TableHeaderCell>DESCRIPTION</TableHeaderCell>
-          <TableHeaderCell>DATE</TableHeaderCell>
-          <TableHeaderCell>TOTAL</TableHeaderCell>
+          <TableHeaderCell>{texts("tabs.transactions.description")}</TableHeaderCell>
+          <TableHeaderCell>{texts("tabs.transactions.date")}</TableHeaderCell>
+          <TableHeaderCell>{texts("tabs.transactions.total")}</TableHeaderCell>
         </TableRow>
       </TableHead>
       <TableBody>

@@ -7,6 +7,7 @@ import { UserAuth } from "@/context/AuthContext";
 import Image from "next/image";
 import HeaderDashboard from "../components/HeaderDashboard";
 import TableDashboard from "../components/TableDashboard";
+import Loader from "@/components/LoadingComponents/Loader";
 
 interface UserData {
   name: string;
@@ -71,7 +72,7 @@ useEffect(() => {
 }, [user]);
 
 if (loading) {
-  return <div>Loading...</div>;
+  return <div className="h-screen"><Loader/></div>;
 }
 
 

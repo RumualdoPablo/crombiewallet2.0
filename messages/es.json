@@ -14,7 +14,7 @@
             "transactions": {
                 "title": "HISTORIAL",
                 "description": "DESCRIPCION",
-                "date": "date",
+                "date": "FECHA",
                 "total": "TOTAL"
             }
         },
