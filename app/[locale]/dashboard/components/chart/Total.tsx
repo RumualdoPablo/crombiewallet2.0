@@ -12,7 +12,7 @@ import {
   Title,
 } from "@tremor/react";
 import React, { useState } from "react";
-import TableRegisters from "../TableRegisters.1";
+
 
 const Total: React.FC<DataProps> = ({ expenses, incomes }) => {
   const [selectedView, setSelectedView] = useState("1");
@@ -34,7 +34,7 @@ const Total: React.FC<DataProps> = ({ expenses, incomes }) => {
 
   const totalExpenses = getTotalofData(expenses);
   const totalIncomes = getTotalofData(incomes);
-  const balance = totalExpenses - totalIncomes || 0;
+  const balance = totalIncomes - totalExpenses || 0;
 
   return (
     <>
