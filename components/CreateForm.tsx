@@ -12,7 +12,9 @@ interface CreateFormProp {
   toggleModal: () => void;
   formType: "expense" | "income";
 }
+
 const CreateForm = ({ toggleModal, formType }: CreateFormProp) => {
+  
   const { user } = UserAuth();
   const [isPending, setIsPending] = useState(false);
   const { register, handleSubmit } = useForm<FieldValues>({
@@ -22,6 +24,7 @@ const CreateForm = ({ toggleModal, formType }: CreateFormProp) => {
       category: "",
     },
   });
+
   const router = useRouter();
 
   const handleFormSubmit = async (data: FieldValues, tag: string) => {
@@ -55,12 +58,15 @@ const CreateForm = ({ toggleModal, formType }: CreateFormProp) => {
 
       setIsPending(false);
     }
+    //Ver donde poner el refresh para que funcione
+    router.refresh()
   };
 
   const onSubmit = (data: FieldValues) => {
     formType === "expense"
       ? handleFormSubmit(data, "expense")
       : handleFormSubmit(data, "income");
+      toggleModal()
   };
 
   return (
@@ -146,15 +152,3 @@ const CreateForm = ({ toggleModal, formType }: CreateFormProp) => {
 
 export default CreateForm;
 
-// const onSubmit: SubmitHandler<FieldValues> = (data: any) => {
-//   axios.post(`/api/${formType}`, data)
-//     .then(res => {
-//       startTransition(() => {
-//         router.refresh()
-//       })
-//       toggleModal()
-//     })
-//     .catch(error => {
-//       console.log(error)
-//     })
-// }
