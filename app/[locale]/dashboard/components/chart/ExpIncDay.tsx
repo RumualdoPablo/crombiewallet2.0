@@ -1,5 +1,5 @@
-import { DataProps } from "@/interfaces/data";
-import { Card, Title, LineChart, ValueFormatter } from "@tremor/react";
+import React from "react";
+import { Card, Title, AreaChart } from "@tremor/react";
 
 interface Entry {
   createdAt: string | number | Date;
@@ -7,51 +7,49 @@ interface Entry {
   date: any;
 }
 
-const ExpIncDay: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
+const ExpIncDay: React.FC = ({ expenses, incomes, texts }) => {
   const calculateChartData = () => {
-    const chartData: { [day: string]: { Expenses: number; Incomes: number } } = {};
+    const chartData: { date: string; expenses: number; incomes: number }[] = [];
 
-    //calcula gastos totales por dia
+    //calculo gastos totales por dia
     expenses.forEach((expense: Entry) => {
       const date = expense.date.toDate().toLocaleString();
-      chartData[date] = chartData[date] || { Expenses: 0, Incomes: 0 };
-      chartData[date].Expenses += expense.amount;
+      const existingData = chartData.find((data) => data.date === date);
+      if (existingData) {
+        existingData.expenses += expense.amount;
+      } else {
+        chartData.push({ date, expenses: expense.amount, incomes: 0 });
+      }
     });
 
-    //calcula ingresos totales por dia
+    //calculo ingresos totales por dia
     incomes.forEach((income: Entry) => {
       const date = new Date(income.createdAt).toLocaleDateString();
-      chartData[date] = chartData[date] || { Expenses: 0, Incomes: 0 };
-      chartData[date].Incomes += income.amount;
+      const existingData = chartData.find((data) => data.date === date);
+      if (existingData) {
+        existingData.incomes += income.amount;
+      } else {
+        chartData.push({ date, expenses: 0, incomes: income.amount });
+      }
     });
 
-    return Object.keys(chartData).map((day) => ({
-      dia: day,
-      Expenses: chartData[day].Expenses,
-      Incomes: chartData[day].Incomes,
-    }));
+    return chartData;
   };
 
   const chartData = calculateChartData();
 
-  const dataFormatter: ValueFormatter = (number: number) => {
-    return "$" + Intl.NumberFormat("its").format(number).toString();
-  };
-
   return (
     <Card>
       <Title className="text-sm text-center font-bold uppercase">
-      {texts("tabs.home.card-lines")}
+        {texts("tabs.home.card-lines")}
       </Title>
-      <LineChart
+      <AreaChart
         className="mt-6"
         data={chartData}
-        index="dia"
-        categories={["Expenses", "Incomes"]}
-        colors={["red", "green"]}
-        valueFormatter={dataFormatter}
-        yAxisWidth={40}
-        showLegend={false}
+        index="date"
+        categories={["expenses", "incomes"]}
+        colors={["indigo", "cyan"]}
+        valueFormatter={(number) => "$" + new Intl.NumberFormat("us").format(number).toString()}
       />
     </Card>
   );
