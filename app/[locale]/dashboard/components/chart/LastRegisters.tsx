@@ -9,9 +9,9 @@ const LastRegisters: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
   const incomeList: incomes[] = incomes || [];
   const transactions = [...expenseList, ...incomeList];
 
-  //agrego un estado para configurar el orden
+  //estado para configurar el orden
   const [sortConfig, setSortConfig] = useState({
-    key: 'date', //campos de orden por default 
+    key: 'date', //campos de orden por defecto 
     direction: 'desc',
   });
 
@@ -45,6 +45,7 @@ const LastRegisters: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
             )}
           </TableHeaderCell>
           <TableHeaderCell>{texts("tabs.transactions.total")}</TableHeaderCell>
+          <TableHeaderCell>TYPE</TableHeaderCell> 
         </TableRow>
       </TableHead>
       <TableBody>
@@ -55,6 +56,7 @@ const LastRegisters: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
               <Text>{data.date.toDate().toLocaleString()}</Text>
             </TableCell>
             <TableCell>{data.amount}</TableCell>
+            <TableCell>{expenseList.includes(data) ? <BadgeDelta deltaType={"decrease"} /> : <BadgeDelta deltaType={"increase"} />}</TableCell>
           </TableRow>
         ))}
       </TableBody>
