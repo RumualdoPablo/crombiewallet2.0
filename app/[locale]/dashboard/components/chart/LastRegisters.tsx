@@ -11,14 +11,16 @@ const LastRegisters: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
   const incomeList: incomes[] = incomes || [];
   const transactions = [...expenseList, ...incomeList];
 
-  //estado para configurar el orden
+  //Estado para configurar el orden
   const [sortConfig, setSortConfig] = useState({
     key: 'date',
     direction: 'desc',
   });
- //estado para controlar cuantos elementos se muestran
+
+  //Estado para controlar cuantos elementos se muestran
   const [showAll, setShowAll] = useState(false);
- //ordeno las transacciones por fecha
+
+  //Ordeno las transacciones por fecha
   const sortedTransactions = [...transactions].sort((a, b) => {
     if (a[sortConfig.key] < b[sortConfig.key]) {
       return sortConfig.direction === 'asc' ? -1 : 1;
@@ -28,7 +30,8 @@ const LastRegisters: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
     }
     return 0;
   });
- //funcion para cambiar el orden ascendente o descendente
+
+  //Funcion para cambiar el orden ascendente o descendente
   const requestSort = (key: string) => {
     let direction = 'asc';
     if (sortConfig.key === key && sortConfig.direction === 'asc') {
@@ -37,15 +40,21 @@ const LastRegisters: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
     setSortConfig({ key, direction });
   };
 
+  //Función para eliminar una entrada
+
+console.log(transactions);
+
+
   return (
     <Card>
-      <Title className='font-medium'>List of Movements</Title>
+
       <div style={{ maxHeight: showAll ? '500px' : 'auto', overflowY: showAll ? 'auto' : 'visible' }}>
         <Table>
           <TableHead>
             <TableRow>
               <TableHeaderCell>{texts("tabs.transactions.description")}</TableHeaderCell>
-              <TableHeaderCell onClick={() => requestSort('date')}>
+              <TableHeaderCell className='cursor-pointer'
+                onClick={() => requestSort('date')}>
                 {texts("tabs.transactions.date")} {sortConfig.key === 'date' && (
                   sortConfig.direction === 'asc' ? '↑' : '↓'
                 )}
@@ -80,7 +89,7 @@ const LastRegisters: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
             {!showAll && sortedTransactions.length > 10 && (
               <TableRow>
                 <TableCell colSpan={4}>
-                  <Button onClick={() => setShowAll(true)}>View More</Button>
+                  <Button onClick={() => setShowAll(true)}>{texts("tabs.transactions.button")}</Button>
                 </TableCell>
               </TableRow>
             )}

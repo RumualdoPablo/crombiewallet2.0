@@ -25,7 +25,8 @@
                 "title": "TRANSACTIONS",
                 "description": "DESCRIPTION",
                 "date": "DATE",
-                "total": "TOTAL"
+                "total": "TOTAL",
+                "button": "View more"
             }
         },
         "balance": "Balance",

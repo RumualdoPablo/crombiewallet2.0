@@ -30,7 +30,7 @@ const HeaderDashboard = () => {
         try {
           const userDocRef = doc(db, "users", user?.uid ?? "");
           const docSnapshot = await getDoc(userDocRef);
-          console.log("snapshot", docSnapshot);
+          
           if (docSnapshot.exists()) {
             setUserData(docSnapshot.data() as UserData);
           } else {
