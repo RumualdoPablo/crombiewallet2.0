@@ -55,7 +55,9 @@ function LoginPage() {
                     </div>
                 
                 <div className="mt-8 flex flex-col gap-y-8">
+                <div className="mx-20">
                     <Button type="submit">Login</Button>
+                </div>
                 </div>
             </form>
         </div>

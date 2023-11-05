@@ -1,57 +1,37 @@
-import { DataProps } from "@/types"
-import { Card, Title, BarChart, ValueFormatter } from "@tremor/react"
+import { DataProps } from "@/interfaces/data";
+import { Card, Title, DonutChart, ValueFormatter } from "@tremor/react";
 
-const ExpIncMonth: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
+const ExpIncMonth: React.FC<DataProps> = ({ expenses, texts }) => {
+  //agrupo gastos por categoria y me devuelve los totales
+  const groupedData = expenses.reduce((acc, entry) => {
+    acc[entry.category] = acc[entry.category] || 0;
+    acc[entry.category] += entry.amount;
+    return acc;
+  }, {});
 
-  const calculateData = (entries: any[] | undefined, type: string) => {
-    const result: { [month: string]: number } = {}
+  const chartData = Object.keys(groupedData).map((category) => ({
+    name: category,
+    sales: groupedData[category],
+  }));
 
-    entries?.forEach((entry: { createdAt: string | number | Date, amount: any }) => {
-      const createdAt = new Date(entry.createdAt)
-      const month = createdAt.toLocaleString("default", { month: "long" })
-      const amount = entry.amount
-
-      if (result[month]) {
-        result[month] += amount
-      } else {
-        result[month] = amount
-      }
-    })
-
-    return Object.keys(result).map((month) => ({
-      mes: month,
-      [type]: Number(result[month]),
-    }))
-  }
-
-  const expenseData = calculateData(expenses, 'Expenses')
-  const incomeData = calculateData(incomes, 'Incomes')
-
-  const chartData = expenseData.map((expenseEntry, index) => ({
-    mes: expenseEntry.mes.toLocaleUpperCase(),
-    Gastos: expenseEntry.Gastos,
-    Ingresos: incomeData[index]?.Ingresos,
-  }))
-
-  const dataFormatter: ValueFormatter = (number: number) => {
-    return "$" + Intl.NumberFormat("its").format(number).toString()
-  }
+  const valueFormatter: ValueFormatter = (number: number) => {
+    return "$" + Intl.NumberFormat("its").format(number).toString();
+  };
 
   return (
-    <Card className="p-4">
-      <Title className="text-sm text-center font-bold">{texts("tabs.home.card-circle")}</Title>
-      <BarChart
+    <Card>
+      <Title className="text-sm text-center font-bold uppercase">
+        {texts("tabs.home.card-circle")}
+      </Title>
+      <DonutChart
         className="mt-6"
         data={chartData}
-        index="month"
-        categories={["Expenses", "Incomes"]}
-        colors={["red", "green"]}
-        valueFormatter={dataFormatter}
-        yAxisWidth={40}
-        showLegend={false}
+        category="sales"
+        index="name"
+        valueFormatter={valueFormatter}
       />
     </Card>
-  )
-}
+  );
+};
 
-export default ExpIncMonth
+export default ExpIncMonth;

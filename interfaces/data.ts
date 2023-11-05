@@ -1,6 +1,7 @@
 import { UserData } from "./registerForm";
 
 export interface expenses {
+    category: any;
     id: string;
     description: string;
     user: UserData;

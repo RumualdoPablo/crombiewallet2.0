@@ -18,8 +18,8 @@
         "tabs": {
             "home": {
                 "title":"HOME",
-                "card-circle": "EXPENSES/INCOMES PER MONTH",
-                "card-lines": "EXPENSES/INCOMES PER DAY"
+                "card-circle": "EXPENSES PER MONTH",
+                "card-lines": "EXPENSES/INCOMES PER MONTH"
             },
             "transactions": {
                 "title": "TRANSACTIONS",

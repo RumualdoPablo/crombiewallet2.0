@@ -1,14 +1,12 @@
-import { DataProps } from "@/types"
-import { Expense, Income } from "@prisma/client" //Esto hay que sacarlo porque no usamos prisma
+import { DataProps, expenses, incomes } from "@/interfaces/data"
 import { Text, Table, TableHead, TableRow, 
     TableHeaderCell, TableBody, 
     TableCell, BadgeDelta } from "@tremor/react"
 
 const LastRegisters: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
   
-  //Lo mismo para este tipado, no deberia estar con prisma
-  const expenseList: Expense[] = expenses || []
-  const incomeList: Income[] = incomes || []
+  const expenseList:expenses[] = expenses || []
+  const incomeList: incomes[] = incomes || []
   const transactions = [...expenseList, ...incomeList]
 
 
