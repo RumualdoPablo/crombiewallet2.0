@@ -20,6 +20,7 @@ const CreateForm = ({ toggleModal, formType }: CreateFormProp) => {
       description: "",
       amount: 0,
       category: "",
+      userDate: "",
     },
   });
   const router = useRouter();
@@ -40,6 +41,7 @@ const CreateForm = ({ toggleModal, formType }: CreateFormProp) => {
         date: currentDate,
         tag: tag,
         category: data.category,
+        userDate: data.userDate
       };
 
       const updatedItems =
@@ -126,7 +128,13 @@ const CreateForm = ({ toggleModal, formType }: CreateFormProp) => {
             <option value="Otros">Otros</option>
           </select>
         </div>
-
+        <label className="text-sm text-gray-500 dark:text-gray-400">Date</label>
+        <input
+          type="date"
+          {...register("userDate")}
+          className="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 
+            border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        />
         <button
           type="submit"
           className={`font-sans font-bold text-sm rounded-lg py-3 
