@@ -11,11 +11,9 @@ import { db } from "@/firebase";
 import { useTranslations } from "next-intl";
 
 const HeaderDashboard = () => {
-  const { id } = useParams();
   const { user } = UserAuth();
   const [userData, setUserData] = useState<UserData | null>(null);
   const t = useTranslations("dashboard")
-  const router = useRouter();
 
 
   useEffect(() => {

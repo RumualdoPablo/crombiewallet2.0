@@ -14,7 +14,7 @@ const TableDashboard: React.FC<DataProps> = ({ expenses, incomes }) => {
   const t = useTranslations("dashboard")
   
   return (
-    <>
+    <div className="">
       <TabList
         defaultValue="1"
         onValueChange={(value) => setSelectedView(value)}
@@ -25,7 +25,7 @@ const TableDashboard: React.FC<DataProps> = ({ expenses, incomes }) => {
       </TabList>
 
       {selectedView === "1" ? (
-        <>
+        <div className="">
           <Grid numColsLg={3} className="mt-6 gap-6">
             <Card>
               <div className="h-auto">
@@ -43,8 +43,7 @@ const TableDashboard: React.FC<DataProps> = ({ expenses, incomes }) => {
               </div>
             </Card>
           </Grid>
-
-        </>
+          </div>
       ) : (
         <div className="mt-6">
           <Card>
@@ -52,7 +51,7 @@ const TableDashboard: React.FC<DataProps> = ({ expenses, incomes }) => {
           </Card>
         </div>
       )}
-    </>
+    </div>
   )
 }
 

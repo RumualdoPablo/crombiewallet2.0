@@ -5,7 +5,6 @@ import React, { useState } from "react";
 import { UserAuth } from "@/context/AuthContext";
 import Modal from "./Modal";
 import AuthForm from "./AuthForm";
-import { IconWallet } from "@tabler/icons-react";
 import ThemeSwitch from "./ThemeSwitch";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next-intl/client";
@@ -35,14 +34,38 @@ const Navbar = () => {
   return (
     <nav className="h-20 w-full border-b-2 flex items-center justify-between p-2 text-black">
       <div className="flex items-center dark-mode-font ml-5">
-        <h1 className="text-4xl font-bold">
-          <span className="text-black">C</span>
-          <span className="text-yellow">W</span>
+        <h1 className="text-4xl font-bold cursor-pointer">
+          <Link href={"/"} locale="en">
+            <span className="text-black">C</span>
+            <span className="text-yellow">W</span>
+          </Link>
         </h1>
       </div>
 
+      <div className="flex gap-20">
+        <Link href="en/about">
+          <span className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition duration-300">
+            About
+          </span>
+        </Link>
+
+        <Link href="/faq">
+          <span className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition duration-300">
+            FAQ
+          </span>
+        </Link>
+
+        {user && (
+          <Link href={`/dashboard/${user.uid}`}>
+            <span className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition duration-300">
+              Dashboard
+            </span>
+          </Link>
+        )}
+      </div>
       <div className="flex gap-x-4 items-center">
         <ThemeSwitch />
+
         <div className="flex gap-x-1 dark-mode-font items-center">
           <IconWorld />
           <Link
@@ -57,6 +80,7 @@ const Navbar = () => {
           </Link>
         </div>
 
+        <div className="flex gap-x-4 items-center"></div>
         {!user ? (
           <div className="flex items-center">
             <button

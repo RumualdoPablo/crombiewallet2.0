@@ -16,7 +16,7 @@ const Total: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
 
   const [isExpenseModalOpen, setExpenseModalOpen] = useState(false);
   const [isIncomeModalOpen, setIncomeModalOpen] = useState(false);
-  const [isBalanceVisible, setIsBalanceVisible] = useState(true);
+  const [isBalanceVisible, setIsBalanceVisible] = useState(false);
 
   const toggleExpenseModal = () => {
     setExpenseModalOpen(!isExpenseModalOpen);
@@ -49,13 +49,13 @@ const Total: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
           <Title className=" text-m text-center font-semibold flex items-center justify-between">
             {texts("balance")}
             {isBalanceVisible ? (
-              <IconEye
+              <IconEyeOff
                 className="cursor-pointer p-1 rounded hover:bg-slate-50"
                 onClick={toggleBalanceVisibility}
                 size={24}
               />
             ) : (
-              <IconEyeOff
+              <IconEye
                 className="cursor-pointer p-1 rounded hover:bg-slate-50"
                 onClick={toggleBalanceVisibility}
                 size={24}

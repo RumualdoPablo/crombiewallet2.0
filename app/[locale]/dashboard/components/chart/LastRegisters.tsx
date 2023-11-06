@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { DataProps, expenses, incomes } from "@/interfaces/data";
 import {
   Text,
@@ -9,7 +9,6 @@ import {
   TableBody,
   TableCell,
   BadgeDelta,
-  Title,
   Card,
   Button,
 } from "@tremor/react";

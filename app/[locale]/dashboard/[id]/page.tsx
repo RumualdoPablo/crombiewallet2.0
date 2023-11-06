@@ -1,12 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
-import { doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc, onSnapshot } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { db } from "@/firebase";
 import { UserAuth } from "@/context/AuthContext";
 import HeaderDashboard from "../components/HeaderDashboard";
 import TableDashboard from "../components/TableDashboard";
 import Loader from "@/components/LoadingComponents/Loader";
+import Footer from "@/components/Footer";
 
 interface UserData {
   name: string;
@@ -23,30 +24,33 @@ const Profile = () => {
   console.log("Viendo cuanto renderiza esto");
 
   useEffect(() => {
-    const fetchUserData = async () => {
+    const fetchData = async () => {
       if (user) {
         const userDocRef = doc(db, "users", user.uid);
-        const docSnapshot = await getDoc(userDocRef);
-  
-        if (docSnapshot.exists()) {
-          const userData = docSnapshot.data();
-  
-          if (!user.emailVerified) {
-            router.push("/verification");
-            return;
+
+        const unsubscribe = onSnapshot(userDocRef, (doc) => {
+          if (doc.exists()) {
+            const userData = doc.data();
+            if (!user.emailVerified) {
+              router.push("/verification");
+              return;
+            }
+
+            setExpenses(userData.expenses || []);
+            setIncomes(userData.income || []);
+            setLoading(false);
           }
-  
-          setExpenses(userData?.expenses || []);
-          setIncomes(userData?.income || []);
-        }
-  
-        setLoading(false);
-        console.log("Viendo cuanto renderiza esto2222");
+        });
+
+        return () => {
+          // Cleanup the listener when component unmounts
+          unsubscribe();
+        };
       }
     };
-  
-    fetchUserData();
-  }, [user]);
+
+    fetchData();
+  }, [user, router]);
 
   if (loading) {
     return (
@@ -60,6 +64,7 @@ const Profile = () => {
     <div className="">
       <HeaderDashboard />
       <TableDashboard expenses={expenses} incomes={incomes} />
+      <Footer />
     </div>
   );
 };

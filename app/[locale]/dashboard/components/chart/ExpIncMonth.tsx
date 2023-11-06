@@ -4,7 +4,7 @@ import { Card, Title, AreaChart } from "@tremor/react";
 interface Entry {
   createdAt: string | number | Date;
   amount: number;
-  date: any;
+  userDate: any;
 }
 
 const ExpIncMonth: React.FC = ({ expenses, incomes, texts  }) => {
@@ -15,7 +15,7 @@ const ExpIncMonth: React.FC = ({ expenses, incomes, texts  }) => {
 
     //calculo gastos totales por dia
     expenses.forEach((expense: Entry) => {
-      const date = expense.date.toDate().toLocaleString();
+      const date = expense.userDate.toLocaleString();
       const existingData = chartData.find((data) => data.date === date);
       if (existingData) {
         existingData.expenses += expense.amount;
@@ -26,7 +26,7 @@ const ExpIncMonth: React.FC = ({ expenses, incomes, texts  }) => {
 
     //calculo ingresos totales por dia
     incomes.forEach((income: Entry) => {
-      const date = income.date.toDate().toLocaleString();
+      const date = income.userDate.toLocaleString();
       const existingData = chartData.find((data) => data.date === date);
       if (existingData) {
         existingData.incomes += income.amount;

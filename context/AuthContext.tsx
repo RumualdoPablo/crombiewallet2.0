@@ -46,6 +46,7 @@ export const AuthContextProvider = ({
           profilePictureURL: userCredential.user.photoURL,
           expenses: [],
           income: [],
+          maxexpense: ""
         };
         await setDoc(userDocRef, userData);
       }
@@ -76,6 +77,7 @@ export const AuthContextProvider = ({
         profilePictureURL: formData.profilePictureURL,
         expenses: [],
         income: [],
+        maxexpense: ""
       };
       await setDoc(userDocRef, userData);
 
