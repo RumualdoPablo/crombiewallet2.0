@@ -1,7 +1,11 @@
 import { DataProps } from "@/interfaces/data";
 import { Card, Title, DonutChart, ValueFormatter } from "@tremor/react";
+import ExpenseLimit from "./ExpenseLimit";
+import { useState } from "react";
 
 const ExpCatMonth: React.FC<DataProps> = ({ expenses, texts }) => {
+  const [maxExpense] = useState(1000);
+  
   //agrupo gastos por categoria y me devuelve los totales
   const groupedData = expenses?.reduce((acc, entry) => {
     acc[entry.category] = acc[entry.category] || 0;
@@ -19,18 +23,23 @@ const ExpCatMonth: React.FC<DataProps> = ({ expenses, texts }) => {
   };
 
   return (
-    <Card className="">
-      <Title className="text-sm text-center font-bold uppercase">
-        {texts("tabs.home.card-circle")}
-      </Title>
-      <DonutChart
-        className="mt-6"
-        data={chartData}
-        category="sales"
-        index="name"
-        valueFormatter={valueFormatter}
-      />
-    </Card>
+    <div>
+      <Card>
+        <Title className="text-sm text-center font-bold uppercase">
+          {texts("tabs.home.card-circle")}
+        </Title>
+        <DonutChart
+          className="mt-6"
+          data={chartData}
+          category="sales"
+          index="name"
+          valueFormatter={valueFormatter}
+        />
+      </Card>
+      <Card>
+      <ExpenseLimit expenses={expenses} maxExpense={maxExpense} /> {/* Utiliza el componente FinancialProgress */}
+      </Card>
+    </div>
   );
 };
 
