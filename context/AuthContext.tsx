@@ -12,8 +12,11 @@ import {
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { auth, db } from "@/firebase";
-import { AuthContextProps, RegisterForm, UserData } from "@/interfaces/registerForm";
-
+import {
+  AuthContextProps,
+  RegisterForm,
+  UserData,
+} from "@/interfaces/registerForm";
 
 export const AuthContext = createContext<AuthContextProps | null>(null);
 
@@ -23,6 +26,7 @@ export const AuthContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [user, setUser] = useState<UserData>();
+  const [emailVerified, setEmailVerified] = useState(false);
 
   const router = useRouter();
 
@@ -41,7 +45,7 @@ export const AuthContextProvider = ({
           email: userCredential.user.email,
           profilePictureURL: userCredential.user.photoURL,
           expenses: [],
-          income:[]
+          income: [],
         };
         await setDoc(userDocRef, userData);
       }
@@ -59,7 +63,11 @@ export const AuthContextProvider = ({
         formData.email,
         formData.password
       );
-      await sendEmailVerification(userCredential.user);
+
+      if (!emailVerified) {
+        await sendEmailVerification(userCredential.user);
+        setEmailVerified(true);
+      }
 
       const userDocRef = doc(db, "users", userCredential.user.uid);
       const userData = {
@@ -67,7 +75,7 @@ export const AuthContextProvider = ({
         email: formData.email,
         profilePictureURL: formData.profilePictureURL,
         expenses: [],
-        income: []
+        income: [],
       };
       await setDoc(userDocRef, userData);
 
@@ -85,7 +93,11 @@ export const AuthContextProvider = ({
         email,
         password
       );
-
+      if (!userCredential.user.emailVerified) {
+        router.push("/verification");
+        console.log("User's email is not verified. Please verify your email.");
+        return;
+      }
       console.log("User signed in successfully:", userCredential.user);
       router.push(`/dashboard/${userCredential.user.uid}`);
     } catch (error) {
@@ -103,11 +115,18 @@ export const AuthContextProvider = ({
       setUser(currentUser);
     });
     return () => unsubscribe();
-  }, [user]);
+  }, []);
 
   return (
     <AuthContext.Provider
-      value={{ user, googleSignIn, logOut, registerUser, signInUser }}
+      value={{
+        user,
+        googleSignIn,
+        logOut,
+        registerUser,
+        signInUser,
+        emailVerified,
+      }}
     >
       {children}
     </AuthContext.Provider>

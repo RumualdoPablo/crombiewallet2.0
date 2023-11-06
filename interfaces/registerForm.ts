@@ -14,6 +14,7 @@ export interface RegisterForm {
       name: string;
       email: string;
       profilePictureURL: string | null;
+      emailVerified?: boolean;
     }
   
   //Interfaz para los props que le son pasados al contexto de autenticación

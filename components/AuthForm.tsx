@@ -44,7 +44,9 @@ const AuthForm = () => {
               </span>
             </div>
           </div>
+          <div className="mx-20">
           <Button onClick={googleSignIn}> Google </Button>
+      </div>
       </div>
 
       <div onClick={toggleVariant} className="underline cursor-pointer flex justify-end mt-5">

@@ -18,14 +18,15 @@
         "tabs": {
             "home": {
                 "title": "PANEL PRINCIPAL",
-                "card-circle": "GASTOS/INGRESOS POR MES",
+                "card-circle": "GASTOS POR CATEGORIA DEL MES",
                 "card-lines": "GASTOS/INGRESOS POR MES"
             },
             "transactions": {
                 "title": "HISTORIAL",
                 "description": "DESCRIPCION",
                 "date": "FECHA",
-                "total": "TOTAL"
+                "total": "TOTAL",
+                "button": "Ver más"
             }
         },
         "balance": "Balance",

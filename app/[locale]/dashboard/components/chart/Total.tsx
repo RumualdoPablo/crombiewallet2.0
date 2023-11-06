@@ -1,14 +1,12 @@
 import CreateForm from "@/components/CreateForm";
 import Modal from "@/components/Modal";
 import { DataProps } from "@/interfaces/data";
-import { IconSquarePlus } from "@tabler/icons-react";
+import { IconEye, IconEyeOff, IconSquarePlus } from "@tabler/icons-react";
 import {
-  Grid,
   Card,
   Flex,
   BadgeDelta,
   Metric,
-  Text,
   Title,
 } from "@tremor/react";
 import React, { useState } from "react";
@@ -18,6 +16,7 @@ const Total: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
 
   const [isExpenseModalOpen, setExpenseModalOpen] = useState(false);
   const [isIncomeModalOpen, setIncomeModalOpen] = useState(false);
+  const [isBalanceVisible, setIsBalanceVisible] = useState(true);
 
   const toggleExpenseModal = () => {
     setExpenseModalOpen(!isExpenseModalOpen);
@@ -29,6 +28,10 @@ const Total: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
 
   const getTotalofData = (data: any[] | undefined) => {
     return data?.reduce((acc, exp) => exp.amount + acc, 0);
+  };
+
+  const toggleBalanceVisibility = () => {
+    setIsBalanceVisible(!isBalanceVisible);
   };
 
   const totalExpenses = getTotalofData(expenses);
@@ -45,6 +48,19 @@ const Total: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
         <Flex alignItems="start">
           <Title className=" text-m text-center font-semibold flex items-center justify-between">
             {texts("balance")}
+            {isBalanceVisible ? (
+              <IconEye
+                className="cursor-pointer p-1 rounded hover:bg-slate-50"
+                onClick={toggleBalanceVisibility}
+                size={24}
+              />
+            ) : (
+              <IconEyeOff
+                className="cursor-pointer p-1 rounded hover:bg-slate-50"
+                onClick={toggleBalanceVisibility}
+                size={24}
+              />
+            )}
           </Title>
           <BadgeDelta deltaType={balance > 0 ? "increase" : "decrease"} />
         </Flex>
@@ -53,9 +69,13 @@ const Total: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
           alignItems="baseline"
           className="truncate space-x-3"
         >
-          <Metric className={balance > 0 ? "text-green-400" : "text-red-400"}>
-            $ {balance}
-          </Metric>
+          {isBalanceVisible ? (
+            <Metric className="text-green-400">****</Metric>
+          ) : (
+            <Metric className={balance > 0 ? "text-green-400" : "text-red-400"}>
+              $ {balance}
+            </Metric>
+          )}
         </Flex>
       </Card>
 
@@ -94,7 +114,7 @@ const Total: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
       >
         <Flex alignItems="start">
           <Title className="text-m text-center font-semibold flex items-center justify-between">
-          {texts("expense")}
+            {texts("expense")}
             <IconSquarePlus
               className="cursor-pointer p-1 rounded hover:bg-slate-50"
               onClick={toggleExpenseModal}

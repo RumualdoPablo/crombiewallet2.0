@@ -17,20 +17,13 @@ const HeaderDashboard = () => {
   const t = useTranslations("dashboard")
   const router = useRouter();
 
-  // useEffect(() => {
-  //   if (session?.status !== "authenticated") {
-  //     console.log("Not authenticated")
-  //     // router.push("/")
-  //     {/*Descomentar el router.push cuando termine*/}
-  //   }
-  // }, [session?.status, router])
 
   useEffect(() => {
     const fetchUserData = async () => {
         try {
           const userDocRef = doc(db, "users", user?.uid ?? "");
           const docSnapshot = await getDoc(userDocRef);
-          console.log("snapshot", docSnapshot);
+          
           if (docSnapshot.exists()) {
             setUserData(docSnapshot.data() as UserData);
           } else {

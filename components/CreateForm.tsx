@@ -7,11 +7,13 @@ import { FormEvent, useState, useTransition } from "react";
 import { UserAuth } from "@/context/AuthContext";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "@/firebase";
+import { v4 as uuidv4 } from 'uuid';
 
 interface CreateFormProp {
   toggleModal: () => void;
   formType: "expense" | "income";
 }
+
 const CreateForm = ({ toggleModal, formType }: CreateFormProp) => {
   const { user } = UserAuth();
   const [isPending, setIsPending] = useState(false);
@@ -20,8 +22,10 @@ const CreateForm = ({ toggleModal, formType }: CreateFormProp) => {
       description: "",
       amount: 0,
       category: "",
+      userDate: "",
     },
   });
+
   const router = useRouter();
 
   const handleFormSubmit = async (data: FieldValues, tag: string) => {
@@ -30,16 +34,19 @@ const CreateForm = ({ toggleModal, formType }: CreateFormProp) => {
     const currentDate = new Date();
     const userDocRef = doc(db, "users", user?.uid ?? "");
     const docSnapshot = await getDoc(userDocRef);
-
+ 
     if (docSnapshot.exists()) {
       const userData = docSnapshot.data();
+      const uniqueId = uuidv4();
 
       const newItem = {
+        id: uniqueId,
         description: data.description,
         amount: parseFloat(data.amount),
         date: currentDate,
         tag: tag,
         category: data.category,
+        userDate: data.userDate,
       };
 
       const updatedItems =
@@ -54,13 +61,16 @@ const CreateForm = ({ toggleModal, formType }: CreateFormProp) => {
       });
 
       setIsPending(false);
+      router.refresh();
     }
+    //Ver donde poner el refresh para que funcione
   };
 
   const onSubmit = (data: FieldValues) => {
     formType === "expense"
       ? handleFormSubmit(data, "expense")
       : handleFormSubmit(data, "income");
+    toggleModal();
   };
 
   return (
@@ -126,7 +136,13 @@ const CreateForm = ({ toggleModal, formType }: CreateFormProp) => {
             <option value="Otros">Otros</option>
           </select>
         </div>
-
+        <label className="text-sm text-gray-500 dark:text-gray-400">Date</label>
+        <input
+          type="date"
+          {...register("userDate")}
+          className="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 
+            border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        />
         <button
           type="submit"
           className={`font-sans font-bold text-sm rounded-lg py-3 
@@ -145,16 +161,3 @@ const CreateForm = ({ toggleModal, formType }: CreateFormProp) => {
 };
 
 export default CreateForm;
-
-// const onSubmit: SubmitHandler<FieldValues> = (data: any) => {
-//   axios.post(`/api/${formType}`, data)
-//     .then(res => {
-//       startTransition(() => {
-//         router.refresh()
-//       })
-//       toggleModal()
-//     })
-//     .catch(error => {
-//       console.log(error)
-//     })
-// }
