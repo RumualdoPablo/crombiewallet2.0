@@ -7,7 +7,9 @@ interface Entry {
   date: any;
 }
 
-const ExpIncMonth: React.FC = ({ expenses, incomes, texts }) => {
+const ExpIncMonth: React.FC = ({ expenses, incomes, texts  }) => {
+
+
   const calculateChartData = () => {
     const chartData: { date: string; expenses: number; incomes: number }[] = [];
 
@@ -24,7 +26,7 @@ const ExpIncMonth: React.FC = ({ expenses, incomes, texts }) => {
 
     //calculo ingresos totales por dia
     incomes.forEach((income: Entry) => {
-      const date = new Date(income.createdAt).toLocaleDateString();
+      const date = income.date.toDate().toLocaleString();
       const existingData = chartData.find((data) => data.date === date);
       if (existingData) {
         existingData.incomes += income.amount;
@@ -48,7 +50,7 @@ const ExpIncMonth: React.FC = ({ expenses, incomes, texts }) => {
         data={chartData}
         index="date"
         categories={["expenses", "incomes"]}
-        colors={["indigo", "cyan"]}
+        colors={["red", "green"]}
         valueFormatter={(number) => "$" + new Intl.NumberFormat("us").format(number).toString()}
       />
     </Card>

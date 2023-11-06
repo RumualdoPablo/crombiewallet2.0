@@ -3,12 +3,10 @@ import Modal from "@/components/Modal";
 import { DataProps } from "@/interfaces/data";
 import { IconEye, IconEyeOff, IconSquarePlus } from "@tabler/icons-react";
 import {
-  Grid,
   Card,
   Flex,
   BadgeDelta,
   Metric,
-  Text,
   Title,
 } from "@tremor/react";
 import React, { useState } from "react";

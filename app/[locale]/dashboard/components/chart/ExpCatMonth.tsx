@@ -3,7 +3,7 @@ import { Card, Title, DonutChart, ValueFormatter } from "@tremor/react";
 
 const ExpCatMonth: React.FC<DataProps> = ({ expenses, texts }) => {
   //agrupo gastos por categoria y me devuelve los totales
-  const groupedData = expenses.reduce((acc, entry) => {
+  const groupedData = expenses?.reduce((acc, entry) => {
     acc[entry.category] = acc[entry.category] || 0;
     acc[entry.category] += entry.amount;
     return acc;

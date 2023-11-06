@@ -7,6 +7,7 @@ import { FormEvent, useState, useTransition } from "react";
 import { UserAuth } from "@/context/AuthContext";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "@/firebase";
+import { v4 as uuidv4 } from 'uuid';
 
 interface CreateFormProp {
   toggleModal: () => void;
@@ -14,7 +15,6 @@ interface CreateFormProp {
 }
 
 const CreateForm = ({ toggleModal, formType }: CreateFormProp) => {
-  
   const { user } = UserAuth();
   const [isPending, setIsPending] = useState(false);
   const { register, handleSubmit } = useForm<FieldValues>({
@@ -34,17 +34,19 @@ const CreateForm = ({ toggleModal, formType }: CreateFormProp) => {
     const currentDate = new Date();
     const userDocRef = doc(db, "users", user?.uid ?? "");
     const docSnapshot = await getDoc(userDocRef);
-
+ 
     if (docSnapshot.exists()) {
       const userData = docSnapshot.data();
+      const uniqueId = uuidv4();
 
       const newItem = {
+        id: uniqueId,
         description: data.description,
         amount: parseFloat(data.amount),
         date: currentDate,
         tag: tag,
         category: data.category,
-        userDate: data.userDate
+        userDate: data.userDate,
       };
 
       const updatedItems =
@@ -59,16 +61,16 @@ const CreateForm = ({ toggleModal, formType }: CreateFormProp) => {
       });
 
       setIsPending(false);
+      router.refresh();
     }
     //Ver donde poner el refresh para que funcione
-    router.refresh()
   };
 
   const onSubmit = (data: FieldValues) => {
     formType === "expense"
       ? handleFormSubmit(data, "expense")
       : handleFormSubmit(data, "income");
-      toggleModal()
+    toggleModal();
   };
 
   return (
@@ -159,4 +161,3 @@ const CreateForm = ({ toggleModal, formType }: CreateFormProp) => {
 };
 
 export default CreateForm;
-
