@@ -3,6 +3,7 @@ import React, { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { UserAuth } from "@/context/AuthContext";
 import Button from "@/components/Button";
+import { toast } from "react-hot-toast"; 
 
 
 function LoginPage() {
@@ -23,6 +24,7 @@ function LoginPage() {
         e.preventDefault();
         try {
             await signInUser(formData.email, formData.password);
+            toast.success("Session started!");
         } catch (error) {
             console.error("Error logging in:", error);
         }
