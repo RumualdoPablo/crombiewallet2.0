@@ -55,6 +55,7 @@ const { user } = UserAuth();
 const [loading, setLoading] = useState(true);
 
 useEffect(() => {
+
   const fetchUserData = async () => {
     if (user) {
       const userDocRef = doc(db, "users", user.uid);
@@ -74,7 +75,6 @@ useEffect(() => {
 if (loading) {
   return <div className="h-screen"><Loader/></div>;
 }
-
 
   return (
     <div className="">

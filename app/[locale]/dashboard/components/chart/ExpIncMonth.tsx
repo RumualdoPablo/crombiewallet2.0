@@ -1,57 +1,58 @@
-import { DataProps } from "@/types"
-import { Card, Title, BarChart, ValueFormatter } from "@tremor/react"
+import React from "react";
+import { Card, Title, AreaChart } from "@tremor/react";
 
-const ExpIncMonth: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
-
-  const calculateData = (entries: any[] | undefined, type: string) => {
-    const result: { [month: string]: number } = {}
-
-    entries?.forEach((entry: { createdAt: string | number | Date, amount: any }) => {
-      const createdAt = new Date(entry.createdAt)
-      const month = createdAt.toLocaleString("default", { month: "long" })
-      const amount = entry.amount
-
-      if (result[month]) {
-        result[month] += amount
-      } else {
-        result[month] = amount
-      }
-    })
-
-    return Object.keys(result).map((month) => ({
-      mes: month,
-      [type]: Number(result[month]),
-    }))
-  }
-
-  const expenseData = calculateData(expenses, 'Expenses')
-  const incomeData = calculateData(incomes, 'Incomes')
-
-  const chartData = expenseData.map((expenseEntry, index) => ({
-    mes: expenseEntry.mes.toLocaleUpperCase(),
-    Gastos: expenseEntry.Gastos,
-    Ingresos: incomeData[index]?.Ingresos,
-  }))
-
-  const dataFormatter: ValueFormatter = (number: number) => {
-    return "$" + Intl.NumberFormat("its").format(number).toString()
-  }
-
-  return (
-    <Card className="p-4">
-      <Title className="text-sm text-center font-bold">{texts("tabs.home.card-circle")}</Title>
-      <BarChart
-        className="mt-6"
-        data={chartData}
-        index="month"
-        categories={["Expenses", "Incomes"]}
-        colors={["red", "green"]}
-        valueFormatter={dataFormatter}
-        yAxisWidth={40}
-        showLegend={false}
-      />
-    </Card>
-  )
+interface Entry {
+  createdAt: string | number | Date;
+  amount: number;
+  date: any;
 }
 
-export default ExpIncMonth
+const ExpIncMonth: React.FC = ({ expenses, incomes, texts }) => {
+  const calculateChartData = () => {
+    const chartData: { date: string; expenses: number; incomes: number }[] = [];
+
+    //calculo gastos totales por dia
+    expenses.forEach((expense: Entry) => {
+      const date = expense.date.toDate().toLocaleString();
+      const existingData = chartData.find((data) => data.date === date);
+      if (existingData) {
+        existingData.expenses += expense.amount;
+      } else {
+        chartData.push({ date, expenses: expense.amount, incomes: 0 });
+      }
+    });
+
+    //calculo ingresos totales por dia
+    incomes.forEach((income: Entry) => {
+      const date = new Date(income.createdAt).toLocaleDateString();
+      const existingData = chartData.find((data) => data.date === date);
+      if (existingData) {
+        existingData.incomes += income.amount;
+      } else {
+        chartData.push({ date, expenses: 0, incomes: income.amount });
+      }
+    });
+
+    return chartData;
+  };
+
+  const chartData = calculateChartData();
+
+  return (
+    <Card>
+      <Title className="text-sm text-center font-bold uppercase">
+        {texts("tabs.home.card-lines")}
+      </Title>
+      <AreaChart
+        className="mt-6"
+        data={chartData}
+        index="date"
+        categories={["expenses", "incomes"]}
+        colors={["indigo", "cyan"]}
+        valueFormatter={(number) => "$" + new Intl.NumberFormat("us").format(number).toString()}
+      />
+    </Card>
+  );
+};
+
+export default ExpIncMonth;

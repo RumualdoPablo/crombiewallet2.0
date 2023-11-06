@@ -1,41 +1,103 @@
-import { DataProps } from "@/types"
-import { Expense, Income } from "@prisma/client" //Esto hay que sacarlo porque no usamos prisma
-import { Text, Table, TableHead, TableRow, 
-    TableHeaderCell, TableBody, 
-    TableCell, BadgeDelta } from "@tremor/react"
+import React, { useState } from 'react';
+import { DataProps, expenses, incomes } from "@/interfaces/data";
+import {
+  Text, Table, TableHead, TableRow,
+  TableHeaderCell, TableBody,
+  TableCell, BadgeDelta, Title, Card, Button
+} from "@tremor/react";
 
 const LastRegisters: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
-  
-  //Lo mismo para este tipado, no deberia estar con prisma
-  const expenseList: Expense[] = expenses || []
-  const incomeList: Income[] = incomes || []
-  const transactions = [...expenseList, ...incomeList]
+  const expenseList: expenses[] = expenses || [];
+  const incomeList: incomes[] = incomes || [];
+  const transactions = [...expenseList, ...incomeList];
+
+  //Estado para configurar el orden
+  const [sortConfig, setSortConfig] = useState({
+    key: 'date',
+    direction: 'desc',
+  });
+
+  //Estado para controlar cuantos elementos se muestran
+  const [showAll, setShowAll] = useState(false);
+
+  //Ordeno las transacciones por fecha
+  const sortedTransactions = [...transactions].sort((a, b) => {
+    if (a[sortConfig.key] < b[sortConfig.key]) {
+      return sortConfig.direction === 'asc' ? -1 : 1;
+    }
+    if (a[sortConfig.key] > b[sortConfig.key]) {
+      return sortConfig.direction === 'asc' ? 1 : -1;
+    }
+    return 0;
+  });
+
+  //Funcion para cambiar el orden ascendente o descendente
+  const requestSort = (key: string) => {
+    let direction = 'asc';
+    if (sortConfig.key === key && sortConfig.direction === 'asc') {
+      direction = 'desc';
+    }
+    setSortConfig({ key, direction });
+  };
+
+  //Función para eliminar una entrada
+
+console.log(transactions);
 
 
   return (
-    <Table>
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>{texts("tabs.transactions.description")}</TableHeaderCell>
-          <TableHeaderCell>{texts("tabs.transactions.date")}</TableHeaderCell>
-          <TableHeaderCell>{texts("tabs.transactions.total")}</TableHeaderCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {transactions?.slice(0, 10).map((data) => (
-          <TableRow key={data.id}>
-            <TableCell>{data.description}</TableCell>
-            <TableCell>
-              <Text>{data.date.toDate().toLocaleString()}</Text>
-            </TableCell>
-            <TableCell>
-              {data.amount}
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  )
-}
+    <Card>
 
-export default LastRegisters
+      <div style={{ maxHeight: showAll ? '500px' : 'auto', overflowY: showAll ? 'auto' : 'visible' }}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeaderCell>{texts("tabs.transactions.description")}</TableHeaderCell>
+              <TableHeaderCell className='cursor-pointer'
+                onClick={() => requestSort('date')}>
+                {texts("tabs.transactions.date")} {sortConfig.key === 'date' && (
+                  sortConfig.direction === 'asc' ? '↑' : '↓'
+                )}
+              </TableHeaderCell>
+              <TableHeaderCell>{texts("tabs.transactions.total")}</TableHeaderCell>
+              <TableHeaderCell>TYPE</TableHeaderCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {showAll
+              ? sortedTransactions.map((data) => (
+                <TableRow key={data.id}>
+                  <TableCell>{data.description}</TableCell>
+                  <TableCell>
+                    <Text>{data.date.toDate().toLocaleString()}</Text>
+                  </TableCell>
+                  <TableCell>{data.amount}</TableCell>
+                  <TableCell>{expenseList.includes(data) ? <BadgeDelta deltaType={"decrease"} /> : <BadgeDelta deltaType={"increase"} />}</TableCell>
+                </TableRow>
+              ))
+              : sortedTransactions.slice(0, 10).map((data) => (
+                <TableRow key={data.id}>
+                  <TableCell>{data.description}</TableCell>
+                  <TableCell>
+                    <Text>{data.date.toDate().toLocaleString()}</Text>
+                  </TableCell>
+                  <TableCell>{data.amount}</TableCell>
+                  <TableCell>{expenseList.includes(data) ? <BadgeDelta deltaType={"decrease"} /> : <BadgeDelta deltaType={"increase"} />}</TableCell>
+                </TableRow>
+              ))}
+
+            {!showAll && sortedTransactions.length > 10 && (
+              <TableRow>
+                <TableCell colSpan={4}>
+                  <Button onClick={() => setShowAll(true)}>{texts("tabs.transactions.button")}</Button>
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </div>
+    </Card>
+  );
+};
+
+export default LastRegisters;
