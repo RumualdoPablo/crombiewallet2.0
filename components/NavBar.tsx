@@ -42,7 +42,7 @@ const Navbar = () => {
         </h1>
       </div>
 
-      <div className="flex gap-20">
+      <div className="flex gap-20 ml-28">
         <Link href="/about">
           <span className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition duration-300">
             About

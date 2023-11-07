@@ -1,4 +1,3 @@
-import Footer from "@/components/Footer";
 import React from "react";
 
 function page() {
@@ -48,7 +47,6 @@ function page() {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }
