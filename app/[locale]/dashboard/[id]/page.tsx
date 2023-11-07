@@ -7,7 +7,7 @@ import { UserAuth } from "@/context/AuthContext";
 import HeaderDashboard from "../components/HeaderDashboard";
 import TableDashboard from "../components/TableDashboard";
 import Loader from "@/components/LoadingComponents/Loader";
-import Footer from "@/components/Footer";
+
 
 interface UserData {
   name: string;

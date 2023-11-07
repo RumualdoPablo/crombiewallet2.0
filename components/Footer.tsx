@@ -3,7 +3,7 @@ import Link from "next-intl/link";
 
 function Footer() {
   return (
-    <div className="w-full">
+    <div className="w-full fixed bottom-0">
       <footer className="h-[80px] bg-white rounded-lg shadow m-4 flex justify-between items-center">
           <ul className="flex gap-10 flex-wrap items-center pl-2 mt-3 text-lg font-medium text-gray-500 sm:mt-0">
             <li>
