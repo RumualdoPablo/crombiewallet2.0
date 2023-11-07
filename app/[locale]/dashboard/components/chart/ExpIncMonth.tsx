@@ -15,7 +15,7 @@ const ExpIncMonth: React.FC = ({ expenses, incomes, texts  }) => {
 
     //calculo gastos totales por dia
     expenses.forEach((expense: Entry) => {
-      const date = expense.userDate.toLocaleString();
+      const date = expense.userDate?.toLocaleString();
       const existingData = chartData.find((data) => data.date === date);
       if (existingData) {
         existingData.expenses += expense.amount;
@@ -26,7 +26,7 @@ const ExpIncMonth: React.FC = ({ expenses, incomes, texts  }) => {
 
     //calculo ingresos totales por dia
     incomes.forEach((income: Entry) => {
-      const date = income.userDate.toLocaleString();
+      const date = income.userDate?.toLocaleString();
       const existingData = chartData.find((data) => data.date === date);
       if (existingData) {
         existingData.incomes += income.amount;
