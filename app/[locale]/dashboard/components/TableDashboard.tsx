@@ -29,11 +29,11 @@ const TableDashboard: React.FC<DataProps> = ({ expenses, incomes }) => {
       </TabList>
 
       {selectedView === "1" ? (
-        <div className="flex mt-6 gap-x-12 justify-center">
+        <div className="flex mt-6 mx-10 gap-x-12 justify-between">
           <Card className={`w-fit ${cardBgClass}`}>
             <Total expenses={expenses} incomes={incomes} texts={t} />
           </Card>
-          <Card className={`w-auto ${cardBgClass}`}>
+          <Card className={`w-fit ${cardBgClass}`}>
             <ExpCatMonth expenses={expenses} incomes={incomes} texts={t} />
           </Card>
           <Card className={`w-[600px] ${cardBgClass}`}>

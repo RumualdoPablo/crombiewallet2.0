@@ -11,7 +11,7 @@ function Footer() {
   const footerBgClass = theme === 'dark' ? 'dark-mode-bg' : 'bg-white';
 
   return (
-    <div className="w-full h-fit">
+    <div className="w-full h-fit fixed bottom-0">
       <footer className={`h-[80px] rounded-lg shadow m-4 flex justify-between items-center ${footerBgClass}`}>
         <ul className="flex gap-10 flex-wrap items-center pl-2 mt-3 text-lg font-medium text-gray-500 sm:mt-0">
           <li>
