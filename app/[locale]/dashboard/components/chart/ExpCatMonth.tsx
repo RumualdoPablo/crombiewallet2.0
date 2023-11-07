@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const ExpCatMonth: React.FC<DataProps> = ({ expenses, texts }) => {
   const [maxExpense] = useState(1000);
-  
+
   //agrupo gastos por categoria y me devuelve los totales
   const groupedData = expenses?.reduce((acc, entry) => {
     acc[entry.category] = acc[entry.category] || 0;
@@ -15,7 +15,7 @@ const ExpCatMonth: React.FC<DataProps> = ({ expenses, texts }) => {
 
   const chartData = Object.keys(groupedData).map((category) => ({
     name: category,
-    sales: groupedData[category],
+    sales: groupedData[category]
   }));
 
   const valueFormatter: ValueFormatter = (number: number) => {
@@ -23,22 +23,22 @@ const ExpCatMonth: React.FC<DataProps> = ({ expenses, texts }) => {
   };
 
   return (
-    <div>
-      <Card>
-        <Title className="text-sm text-center font-bold uppercase">
-          {texts("tabs.home.card-circle")}
-        </Title>
-        <DonutChart
-          className="mt-6"
-          data={chartData}
-          category="sales"
-          index="name"
-          valueFormatter={valueFormatter}
-        />
-      </Card>
-      <Card>
-      <ExpenseLimit expenses={expenses} maxExpense={maxExpense} /> {/* Utiliza el componente FinancialProgress */}
-      </Card>
+    <div className="">
+
+      <Title className="text-sm text-center font-bold uppercase">
+        {texts("tabs.home.card-circle")}
+      </Title>
+      <DonutChart
+        className="mt-6"
+        data={chartData}
+        category="sales"
+        index="name"
+        valueFormatter={valueFormatter}
+        colors={["yellow", "violet", "indigo", "rose", "emerald", "amber"]}
+      />
+      <div className="mt-12">
+        <ExpenseLimit expenses={expenses} maxExpense={maxExpense} /> {/* Utiliza el componente FinancialProgress */}
+      </div>
     </div>
   );
 };

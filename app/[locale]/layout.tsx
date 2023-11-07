@@ -6,6 +6,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { Inter } from 'next/font/google'
 import Navbar from '@/components/NavBar';
 import ToasterAlert from '@/components/ToasterAlert'
+import Footer from '@/components/Footer';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -45,6 +46,7 @@ export default async function RootLayout({ children, params: { locale } }: RootL
               <Navbar />
               <ToasterAlert />
               {children}
+              <Footer/>
             </AuthContextProvider>
           </NextIntlClientProvider>
         </ThemeContext>

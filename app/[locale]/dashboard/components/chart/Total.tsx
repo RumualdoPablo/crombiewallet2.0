@@ -39,7 +39,7 @@ const Total: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
   const balance = totalIncomes - totalExpenses || 0;
 
   return (
-    <>
+    <div className=" w-[350px]">
       <Card
         className="w-full md:w-2/3 md:mx-auto mx-0"
         decoration="top"
@@ -134,7 +134,7 @@ const Total: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
           <CreateForm toggleModal={toggleExpenseModal} formType={"expense"} />
         </Modal>
       </Card>
-    </>
+    </div>
   );
 };
 

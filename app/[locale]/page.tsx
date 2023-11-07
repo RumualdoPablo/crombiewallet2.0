@@ -56,7 +56,7 @@ export default function Home() {
           <Cards key={card.id} text={card.text} image={card.image}/>
         ))}
       </div>
-      <Footer />
+      
     </div>
   )
 }
