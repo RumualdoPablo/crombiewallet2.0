@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState } from "react";
 import { DataProps, expenses, incomes } from "@/interfaces/data";
 import {
@@ -97,73 +99,68 @@ const LastRegisters: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
             </TableRow>
           </TableHead>
           <TableBody className="dark-mode-font">
-            {showAll
-              ? sortedTransactions.map((data) => (
-                <TableRow key={data.id}>
-                  <TableCell>{data.description}</TableCell>
-                  <TableCell>
-                    <Button
-                      onClick={() =>
-                        handleDeleteClick(
-                          data.id
-                        )
-                      }
-                    >
-                      Delete
-                    </Button>
-                  </TableCell>
-                  <TableCell >
-                    <Text>{data.date.toLocaleString()}</Text>
-                  </TableCell>
-                  <TableCell>{data.amount}</TableCell>
-                  <TableCell>
-                    {expenseList.includes(data) ? (
-                      <BadgeDelta deltaType={"decrease"} />
-                    ) : (
-                      <BadgeDelta deltaType={"increase"} />
-                    )}
-                  </TableCell>
-                </TableRow>
-              ))
-              : sortedTransactions.slice(0, 10).map((data) => (
-                <TableRow key={data.id}>
-                  <TableCell>{data.description}</TableCell>
+  {showAll
+    ? sortedTransactions.map((data) => (
+      <TableRow key={data.id}>
+        <TableCell>{data.description}</TableCell>
+        <TableCell>
+        <Text>{data.date.toDate().toLocaleString()}</Text>
+        </TableCell>
+        <TableCell>{data.amount}</TableCell>
+        <TableCell>
+          {expenseList.includes(data) ? (
+            <BadgeDelta deltaType={"decrease"} />
+          ) : (
+            <BadgeDelta deltaType={"increase"} />
+          )}
+        </TableCell>
+        <TableCell>
+          <Button
+            onClick={() =>
+              handleDeleteClick(data.id)
+            }
+          >
+            X
+          </Button>
+        </TableCell>
+      </TableRow>
+    ))
+    : sortedTransactions.slice(0, 10).map((data) => (
+      <TableRow key={data.id}>
+        <TableCell>{data.description}</TableCell>
+        <TableCell>
+          <Text>{data.date.toDate().toLocaleString()}</Text>
+        </TableCell>
+        <TableCell>{data.amount}</TableCell>
+        <TableCell>
+          {expenseList.includes(data) ? (
+            <BadgeDelta deltaType={"decrease"} />
+          ) : (
+            <BadgeDelta deltaType={"increase"} />
+          )}
+        </TableCell>
+        <TableCell>
+          <Button
+            onClick={() =>
+              handleDeleteClick(data.id)
+            }
+          >
+            X
+          </Button>
+        </TableCell>
+      </TableRow>
+    ))}
 
-                  <TableCell>
-                    <Text>{data.date.toDate().toLocaleString()}</Text>
-                  </TableCell>
-                  <TableCell>{data.amount}</TableCell>
-                  <TableCell>
-                    {expenseList.includes(data) ? (
-                      <BadgeDelta deltaType={"decrease"} />
-                    ) : (
-                      <BadgeDelta deltaType={"increase"} />
-                    )}
-                  </TableCell>
-                  <TableCell>
-                    <Button
-                      onClick={() =>
-                        handleDeleteClick(
-                          data.id
-                        )
-                      }
-                    >
-                      Delete
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              ))}
-
-            {!showAll && sortedTransactions.length > 10 && (
-              <TableRow>
-                <TableCell colSpan={4}>
-                  <Button onClick={() => setShowAll(true)}>
-                    {texts("tabs.transactions.button")}
-                  </Button>
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
+  {!showAll && sortedTransactions.length > 10 && (
+    <TableRow>
+      <TableCell colSpan={5}>
+        <Button onClick={() => setShowAll(true)}>
+          {texts("tabs.transactions.button")}
+        </Button>
+      </TableCell>
+    </TableRow>
+  )}
+</TableBody>
         </Table>
       </div>
     </Card>
