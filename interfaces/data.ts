@@ -30,3 +30,11 @@ export interface IncomeProps {
     data: (incomes | (expenses & { user: UserData }))[] | undefined;
     deltaType: 'increase' | 'decrease';
 }
+
+export interface DolarData  {
+    oficial: number;
+    solidario: number;
+    mep: number;
+    ccl: number;
+    blue: number;
+  };

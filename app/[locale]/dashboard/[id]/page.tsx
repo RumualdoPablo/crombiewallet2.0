@@ -1,12 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
-import { collection, doc, getDoc, onSnapshot } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { db } from "@/firebase";
 import { UserAuth } from "@/context/AuthContext";
 import HeaderDashboard from "../components/HeaderDashboard";
 import TableDashboard from "../components/TableDashboard";
 import Loader from "@/components/LoadingComponents/Loader";
+import MoneyCarousel from "@/components/MoneyCarousel";
 
 interface UserData {
   name: string;
@@ -61,6 +62,7 @@ const Profile = () => {
     <div className="">
       <HeaderDashboard />
       <TableDashboard expenses={expenses} incomes={incomes} />
+      <MoneyCarousel/>
     </div>
   );
 };

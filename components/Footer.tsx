@@ -15,7 +15,7 @@ function Footer() {
       <footer className={`h-[80px] rounded-lg shadow m-4 flex justify-between items-center ${footerBgClass}`}>
         <ul className="flex gap-10 flex-wrap items-center pl-2 mt-3 text-lg font-medium text-gray-500 sm:mt-0">
           <li>
-            <Link href="/about-us">
+            <Link href="/about">
               <span className={`text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition duration-300`}>
                 About
               </span>
