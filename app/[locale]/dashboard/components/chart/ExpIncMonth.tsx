@@ -41,7 +41,7 @@ const ExpIncMonth: React.FC = ({ expenses, incomes, texts  }) => {
   const chartData = calculateChartData();
 
   return (
-    <Card>
+    <div className="">
       <Title className="text-sm text-center font-bold uppercase">
         {texts("tabs.home.card-lines")}
       </Title>
@@ -53,7 +53,7 @@ const ExpIncMonth: React.FC = ({ expenses, incomes, texts  }) => {
         colors={["red", "green"]}
         valueFormatter={(number) => "$" + new Intl.NumberFormat("us").format(number).toString()}
       />
-    </Card>
+    </div>
   );
 };
 

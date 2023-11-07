@@ -64,7 +64,6 @@ const Profile = () => {
     <div className="">
       <HeaderDashboard />
       <TableDashboard expenses={expenses} incomes={incomes} />
-      <Footer />
     </div>
   );
 };

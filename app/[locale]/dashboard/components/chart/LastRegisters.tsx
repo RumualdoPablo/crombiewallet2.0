@@ -67,8 +67,6 @@ const LastRegisters: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
     });
   };
 
-  console.log(transactions);
-
   return (
     <Card>
       <div
@@ -114,7 +112,7 @@ const LastRegisters: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
                       </Button>
                     </TableCell>
                     <TableCell>
-                      <Text>{data.date.toDate().toLocaleString()}</Text>
+                      <Text>{data.date.toLocaleString()}</Text>
                     </TableCell>
                     <TableCell>{data.amount}</TableCell>
                     <TableCell>
