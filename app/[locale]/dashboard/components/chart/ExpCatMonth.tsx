@@ -15,7 +15,7 @@ const ExpCatMonth: React.FC<DataProps> = ({ expenses, texts }) => {
 
   const chartData = Object.keys(groupedData).map((category) => ({
     name: category,
-    sales: groupedData[category],
+    sales: groupedData[category]
   }));
 
   const valueFormatter: ValueFormatter = (number: number) => {
@@ -34,6 +34,7 @@ const ExpCatMonth: React.FC<DataProps> = ({ expenses, texts }) => {
           category="sales"
           index="name"
           valueFormatter={valueFormatter}
+          colors={["yellow", "violet", "indigo", "rose", "emerald", "amber"]}
         />
       </Card>
       <Card>
