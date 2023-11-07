@@ -1,5 +1,4 @@
 "use client"
-
 import { TabList, Grid, Card, Tab } from "@tremor/react"
 import { useState } from "react"
 import { useTranslations } from "next-intl"
@@ -8,10 +7,15 @@ import ExpCatMonth from "./chart/ExpCatMonth"
 import Total from "./chart/Total"
 import LastRegisters from "./chart/LastRegisters"
 import { DataProps } from "@/interfaces/data";
+import { useTheme } from 'next-themes';
 
 const TableDashboard: React.FC<DataProps> = ({ expenses, incomes }) => {
   const [selectedView, setSelectedView] = useState("1")
   const t = useTranslations("dashboard")
+  const { theme } = useTheme(); //me dice el estado del tema actual
+
+  //defino clase condicional para el fondo de las cards
+  const cardBgClass = theme === 'dark' ? 'dark-mode-bg' : 'bg-white';
 
   return (
     <div className="">
@@ -26,13 +30,13 @@ const TableDashboard: React.FC<DataProps> = ({ expenses, incomes }) => {
 
       {selectedView === "1" ? (
         <div className="flex mt-6 gap-x-12 justify-center">
-          <Card className="w-fit dark-mode-bg">
+          <Card className={`w-fit ${cardBgClass}`}>
             <Total expenses={expenses} incomes={incomes} texts={t} />
           </Card>
-          <Card className="w-auto dark-mode-bg">
+          <Card className={`w-auto ${cardBgClass}`}>
             <ExpCatMonth expenses={expenses} incomes={incomes} texts={t} />
           </Card>
-          <Card className="w-[600px] dark-mode-bg">
+          <Card className={`w-[600px] ${cardBgClass}`}>
             <ExpIncMonth expenses={expenses} incomes={incomes} texts={t} />
           </Card>
         </div>
@@ -45,4 +49,4 @@ const TableDashboard: React.FC<DataProps> = ({ expenses, incomes }) => {
   )
 }
 
-export default TableDashboard
+export default TableDashboard;

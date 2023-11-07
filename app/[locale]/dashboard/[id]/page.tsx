@@ -8,7 +8,6 @@ import HeaderDashboard from "../components/HeaderDashboard";
 import TableDashboard from "../components/TableDashboard";
 import Loader from "@/components/LoadingComponents/Loader";
 
-
 interface UserData {
   name: string;
   email: string;
@@ -21,7 +20,6 @@ const Profile = () => {
   const [loading, setLoading] = useState(true);
 
   const router = useRouter();
-  console.log("Viendo cuanto renderiza esto");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,7 +41,6 @@ const Profile = () => {
         });
 
         return () => {
-          // Cleanup the listener when component unmounts
           unsubscribe();
         };
       }

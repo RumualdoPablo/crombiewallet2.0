@@ -67,18 +67,10 @@ const ExpenseLimit: React.FC<{ expenses: expenses[] }> = ({ expenses }) => {
         Don&apos;t spend more than you need!
       </Title>
       <Flex>
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div className="flex items-center">
           {isEditing ? (
             <input
-              type="number"
-              style={{
-                width: "85px",
-                height: "20px",
-                fontSize: "14px",
-                padding: "4px",
-                borderRadius: "10px",
-                border: "2px solid #ccc",
-              }}
+              className="w-20 h-8 text-base px-2 py-1 rounded-lg border-2 border-gray-300"
               value={currentMaxExpense}
               onChange={handleMaxExpenseChange}
             />
@@ -87,14 +79,7 @@ const ExpenseLimit: React.FC<{ expenses: expenses[] }> = ({ expenses }) => {
           )}
           <button
             onClick={handleEditClick}
-            style={{
-              marginLeft: "8px",
-              width: "20px",
-              height: "20px",
-              padding: "0",
-              borderRadius: "50%",
-              fontSize: "12px",
-            }}
+            className="ml-2 w-5 h-5 p-0 text-xs flex items-center justify-center border border-gray-300"
           >
             {isEditing ? "✔" : "X"}
           </button>
