@@ -15,7 +15,8 @@ header div{
   @apply flex gap-2 items-center
 }
 
-[data-theme="dark"] body, .dark-mode-bg{
+[data-theme="dark"] body ,
+[data-theme="dark"] .dark-mode-bg{
   @apply bg-gray-800
 } 
 
