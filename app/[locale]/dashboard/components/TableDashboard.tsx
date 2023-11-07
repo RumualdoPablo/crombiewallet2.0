@@ -26,13 +26,13 @@ const TableDashboard: React.FC<DataProps> = ({ expenses, incomes }) => {
 
       {selectedView === "1" ? (
         <div className="flex mt-6 gap-x-12 justify-center">
-          <Card className="w-fit">
+          <Card className="w-fit dark-mode-bg">
             <Total expenses={expenses} incomes={incomes} texts={t} />
           </Card>
-          <Card className="w-auto">
+          <Card className="w-auto dark-mode-bg">
             <ExpCatMonth expenses={expenses} incomes={incomes} texts={t} />
           </Card>
-          <Card className="w-[600px]">
+          <Card className="w-[600px] dark-mode-bg">
             <ExpIncMonth expenses={expenses} incomes={incomes} texts={t} />
           </Card>
         </div>

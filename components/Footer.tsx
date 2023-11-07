@@ -4,7 +4,7 @@ import Link from "next-intl/link";
 function Footer() {
   return (
     <div className="w-full h-fit">
-      <footer className=" h-[80px] bg-white rounded-lg shadow m-4 flex justify-between items-center">
+      <footer className=" h-[80px] bg-white rounded-lg shadow m-4 flex justify-between items-center dark-mode-bg">
           <ul className="flex gap-10 flex-wrap items-center pl-2 mt-3 text-lg font-medium text-gray-500 sm:mt-0">
             <li>
               <Link href="/about-us">
@@ -27,7 +27,7 @@ function Footer() {
             <span className="text-yellow">Wallet</span>
           </Link>
         </h1>
-          <span className="text-lg text-gray-900 sm:text-center pr-2">
+          <span className="text-lg text-gray-900 sm:text-center pr-2 dark-mode-font">
             © 2023{" "}
             <a href="https://flowbite.com/" className="hover:underline">
               Crombiewallet

@@ -68,90 +68,91 @@ const LastRegisters: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
   };
 
   return (
-    <Card>
+    <Card className="dark-mode-card">
       <div
         style={{
           maxHeight: showAll ? "500px" : "auto",
           overflowY: showAll ? "auto" : "visible",
         }}
+        className="dark-mode-card"
       >
-        <Table>
+        <Table >
           <TableHead>
-            <TableRow>
-              <TableHeaderCell>
+            <TableRow >
+              <TableHeaderCell className="dark-mode-font">
                 {texts("tabs.transactions.description")}
               </TableHeaderCell>
               <TableHeaderCell
-                className="cursor-pointer"
+                className="cursor-pointer dark-mode-font"
                 onClick={() => requestSort("date")}
               >
                 {texts("tabs.transactions.date")}{" "}
                 {sortConfig.key === "date" &&
                   (sortConfig.direction === "asc" ? "↑" : "↓")}
               </TableHeaderCell>
-              <TableHeaderCell>
+              <TableHeaderCell className="dark-mode-font">
                 {texts("tabs.transactions.total")}
               </TableHeaderCell>
-              <TableHeaderCell>TYPE</TableHeaderCell>
+              <TableHeaderCell className="dark-mode-font">TYPE</TableHeaderCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody className="dark-mode-font">
             {showAll
               ? sortedTransactions.map((data) => (
-                  <TableRow key={data.id}>
-                    <TableCell>{data.description}</TableCell>
-                    <TableCell>
-                      <Button
-                        onClick={() =>
-                          handleDeleteClick(
-                            data.id
-                          )
-                        }
-                      >
-                        Delete
-                      </Button>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{data.date.toLocaleString()}</Text>
-                    </TableCell>
-                    <TableCell>{data.amount}</TableCell>
-                    <TableCell>
-                      {expenseList.includes(data) ? (
-                        <BadgeDelta deltaType={"decrease"} />
-                      ) : (
-                        <BadgeDelta deltaType={"increase"} />
-                      )}
-                    </TableCell>
-                  </TableRow>
-                ))
+                <TableRow key={data.id}>
+                  <TableCell>{data.description}</TableCell>
+                  <TableCell>
+                    <Button
+                      onClick={() =>
+                        handleDeleteClick(
+                          data.id
+                        )
+                      }
+                    >
+                      Delete
+                    </Button>
+                  </TableCell>
+                  <TableCell >
+                    <Text>{data.date.toLocaleString()}</Text>
+                  </TableCell>
+                  <TableCell>{data.amount}</TableCell>
+                  <TableCell>
+                    {expenseList.includes(data) ? (
+                      <BadgeDelta deltaType={"decrease"} />
+                    ) : (
+                      <BadgeDelta deltaType={"increase"} />
+                    )}
+                  </TableCell>
+                </TableRow>
+              ))
               : sortedTransactions.slice(0, 10).map((data) => (
-                  <TableRow key={data.id}>
-                    <TableCell>{data.description}</TableCell>
+                <TableRow key={data.id}>
+                  <TableCell>{data.description}</TableCell>
 
-                    <TableCell>
-                      <Text>{data.date.toDate().toLocaleString()}</Text>
-                    </TableCell>
-                    <TableCell>{data.amount}</TableCell>
-                    <TableCell>
-                      {expenseList.includes(data) ? (
-                        <BadgeDelta deltaType={"decrease"} />
-                      ) : (
-                        <BadgeDelta deltaType={"increase"} />
-                      )}
-                    </TableCell>
-                    <TableCell>
-                      <Button
-                        onClick={() =>
-                          handleDeleteClick(
-                            data.id
-                          )
-                        }
-                      >
-                        Delete
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                ))}
+                  <TableCell>
+                    <Text>{data.date.toDate().toLocaleString()}</Text>
+                  </TableCell>
+                  <TableCell>{data.amount}</TableCell>
+                  <TableCell>
+                    {expenseList.includes(data) ? (
+                      <BadgeDelta deltaType={"decrease"} />
+                    ) : (
+                      <BadgeDelta deltaType={"increase"} />
+                    )}
+                  </TableCell>
+                  <TableCell>
+                    <Button
+                      onClick={() =>
+                        handleDeleteClick(
+                          data.id
+                        )
+                      }
+                    >
+                      Delete
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
 
             {!showAll && sortedTransactions.length > 10 && (
               <TableRow>

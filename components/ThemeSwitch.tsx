@@ -10,7 +10,7 @@ const ThemeSwitch = () => {
 
   const handleThemeChange = (newTheme: string) => {
     if (newTheme === 'dark') {
-      document.documentElement.style.backgroundColor = '#000';
+      document.documentElement.style.backgroundColor = '#374151';
       document.documentElement.style.color = '#fff';
       setTimeout(() => {
         setTheme(newTheme);

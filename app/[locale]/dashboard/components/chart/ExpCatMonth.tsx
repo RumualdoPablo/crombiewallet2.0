@@ -36,7 +36,7 @@ const ExpCatMonth: React.FC<DataProps> = ({ expenses, texts }) => {
         valueFormatter={valueFormatter}
         colors={["yellow", "violet", "indigo", "rose", "emerald", "amber"]}
       />
-      <div className="mt-12">
+      <div className="mt-12 dark-mode-card">
         <ExpenseLimit expenses={expenses} maxExpense={maxExpense} /> {/* Utiliza el componente FinancialProgress */}
       </div>
     </div>

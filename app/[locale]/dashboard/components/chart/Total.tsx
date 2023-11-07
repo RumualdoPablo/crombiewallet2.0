@@ -41,7 +41,7 @@ const Total: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
   return (
     <div className=" w-[350px]">
       <Card
-        className="w-full md:w-2/3 md:mx-auto mx-0"
+        className="w-full md:w-2/3 md:mx-auto mx-0 dark-mode-card"
         decoration="top"
         decorationColor="cyan"
       >
@@ -80,7 +80,7 @@ const Total: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
       </Card>
 
       <Card
-        className="w-full md:w-2/3 md:mx-auto mx-0 mt-4"
+        className="w-full md:w-2/3 md:mx-auto mx-0 mt-4 dark-mode-card"
         decoration="top"
         decorationColor="green"
       >
@@ -108,7 +108,7 @@ const Total: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
       </Card>
 
       <Card
-        className="w-full md:w-2/3 md:mx-auto mx-0 mt-4"
+        className="w-full md:w-2/3 md:mx-auto mx-0 mt-4 dark-mode-card"
         decoration="top"
         decorationColor="red"
       >

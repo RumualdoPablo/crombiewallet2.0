@@ -62,8 +62,8 @@ const ExpenseLimit: React.FC<{ expenses: expenses[] }> = ({ expenses }) => {
   const progressBarColor = expensePercentage >= 100 ? "red" : "green";
 
   return (
-    <Card className="max-w-sm mx-auto">
-      <Title style={{ marginBottom: "10px" }}>
+    <Card className="max-w-sm mx-auto dark-mode-card ">
+      <Title className="dark-mode-font mb-[10px]">
         Don&apos;t spend more than you need!
       </Title>
       <Flex>
