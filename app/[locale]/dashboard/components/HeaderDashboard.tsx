@@ -13,39 +13,42 @@ import { useTranslations } from "next-intl";
 const HeaderDashboard = () => {
   const { user } = UserAuth();
   const [userData, setUserData] = useState<UserData | null>(null);
-  const t = useTranslations("dashboard")
-
+  const t = useTranslations("dashboard");
 
   useEffect(() => {
     const fetchUserData = async () => {
-        try {
-          const userDocRef = doc(db, "users", user?.uid ?? "");
-          const docSnapshot = await getDoc(userDocRef);
-          
-          if (docSnapshot.exists()) {
-            setUserData(docSnapshot.data() as UserData);
-          } else {
-            console.log("User data not found");
-          }
-        } catch (error) {
-          console.error("Error fetching user data:", error);
+      try {
+        const userDocRef = doc(db, "users", user?.uid ?? "");
+        const docSnapshot = await getDoc(userDocRef);
+
+        if (docSnapshot.exists()) {
+          setUserData(docSnapshot.data() as UserData);
+        } else {
+          console.log("User data not found");
         }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
     };
 
     fetchUserData();
   }, [user?.uid]);
 
   return (
-    <header className="flex items-center justify-between w-full">
-      <div className="flex-col items-start">
-        <Text className="text-base mt-2">{t("header.title")}</Text>
-      </div>
+    <div className="pt-20">
+      <header className="flex items-center justify-between w-full">
+        <div className="flex-col items-start">
+          <Text className="text-base mt-2">{t("header.title")}</Text>
+        </div>
 
-      <div>
-        <IconUser />
-        <p>{t("header.welcome")}, {userData?.name}</p>
-      </div>
-    </header>
+        <div>
+          <IconUser />
+          <p>
+            {t("header.welcome")}, {userData?.name}
+          </p>
+        </div>
+      </header>
+    </div>
   );
 };
 

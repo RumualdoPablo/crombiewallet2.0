@@ -32,7 +32,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="h-20 w-full border-b-2 flex items-center justify-between p-2 text-black">
+    <nav className="h-20 w-full border-b-2 flex items-center justify-between p-2 text-black fixed top-0 bg-white">
       <div className="flex items-center dark-mode-font ml-5">
         <h1 className="text-4xl font-bold cursor-pointer">
           <Link href={"/"} locale="en">
@@ -109,7 +109,7 @@ const Navbar = () => {
             <button
               type="button"
               onClick={handleSignOut}
-              className="text-white bg-red-600 active:bg-red-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center "
+              className="text-white bg-red active:bg-red-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center "
             >
               Sign Out
             </button>
