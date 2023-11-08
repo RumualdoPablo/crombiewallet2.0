@@ -6,19 +6,19 @@ El proyecto tiene como objetivo principal permitir a los usuarios gestionar sus 
 
 1. **Clonar el Repositorio**: Clone el repositorio del proyecto desde [URL del Repositorio](https://github.com/RumualdoPablo/crombiewallet2.0.git) en su máquina local.
 
-2. **Instalar Dependencias**: Asegúrese de tener Node.js y npm instalados. En el directorio raíz del proyecto, ejecute el siguiente comando para instalar las dependencias:
+2. **Instalar Dependencias**: Asegúrese de tener Node.js y npm instalados. En el directorio raíz del proyecto, ejecute el siguiente comando para instalar las dependencias necesarias:
 
     npm install
 
-**Ejecución del Proyecto:** Inicie la aplicación con el siguiente comando:
+3. **Ejecución del Proyecto:** Inicie la aplicación con el siguiente comando:
 
     npm run dev
 
-**Acceso a la Aplicación:** La aplicación estará disponible en http://localhost:3000. Abra su navegador y acceda a esta URL para utilizar el Gestor de Finanzas o acceda desde el siguiente link: (https://crombiewallet2-0-pablo-rumualdos-projects.vercel.app/) 
+4. **Acceso a la Aplicación:** La aplicación estará disponible en http://localhost:3000. Acceda a esta URL desde su navegador para utilizar el Gestor de Finanzas o desde el siguiente link: [URL](https://crombiewallet2-0-pablo-rumualdos-projects.vercel.app/) 
 
-**Disfrute nuestra aplicación y administre sus finanzas con seguridad**
+5. **Disfrute nuestra aplicación y administre sus finanzas con seguridad**
 
-
+### Tecnologías implementadas
 El proyecto fue realizado utilizando las siguientes tecnologías:
 
 - **Next.js 13:** Para la construcción del front-end.
@@ -75,7 +75,8 @@ En la página principal se le muestra al usuario:
 
 ## Agregados de Valor Generales
 
-- Agregar algún gráfico de tortas que indique el tipo de dinero por ubicación o un gráfico que indique el movimiento del dinero en el tiempo.
-- Conectar con alguna API que detalle el valor actual del dólar para saber el valor dolarizado.
-- Establecer un notificador de gastos que genere una notificación cuando el usuario supera un cierto monto de dinero establecido por el usuario.
-- Internacionalización: Se podrá elegir el idioma con un toggle en donde podrás ver la aplicación en español o en inglés.
+- Gráfico de tortas y de gráfico de areas que indican el movimiento del dinero en el tiempo.
+- API que detalla el valor actual del dólar para conocer el valor dolarizado.
+- Notificador de gastos que genera una notificación cuando el usuario supera un cierto monto de dinero establecido por el usuario.
+- Internacionalización: Se puede elegir el idioma con un toggle en donde podrás ver la aplicación en español o en inglés.
+- Extra:  Se puede elegir entre tema claro/oscuro con un toggle donde podras visualizar la aplicación en los distintos modos.
