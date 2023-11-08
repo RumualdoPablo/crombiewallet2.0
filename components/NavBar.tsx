@@ -61,7 +61,7 @@ const Navbar = () => {
 
         {user && (
           <Link href={`/dashboard/${user.uid}`}>
-            <span className="text-gray-700 dark-mode-font hover:text-gray-900 dark:hover:text-white transition duration-300">
+            <span className="text-gray-500 font-medium dark-mode-font hover:text-gray-900 dark:hover:text-white transition duration-300">
               Dashboard
             </span>
           </Link>
