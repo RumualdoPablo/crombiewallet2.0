@@ -1,13 +1,30 @@
 "use client"
+
 import { useTranslations } from "next-intl"
 import hero from "@/public/hero.json"
 import Lottie from "lottie-react"
 import Cards from "@/components/LandingComponents/Cards"
-// import MoneyCarousel from "@/components/MoneyCarousel"
+import Brands from "@/components/Brands";
+import Loader from "@/components/LoadingComponents/Loader";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
 
-  const t = useTranslations("index")
+  useEffect(() => {
+    //loader de 2 segundos
+    const loaderTimeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    //limpia el temporizador cuando el componente corre
+    return () => {
+      clearTimeout(loaderTimeout);
+    };
+  }, []);
+
+  const t = useTranslations("index");
+
 
   const cardArray = [
     {
@@ -30,6 +47,10 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col items-center">
+    {isLoading ? (
+      <Loader /> // Muestra el cargador mientras isLoading sea verdadero
+    ) : (
+      <div>
       <section className="">
         <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 
           xl:gap-0 lg:py-16 lg:grid-cols-12">
@@ -37,26 +58,35 @@ export default function Home() {
             <h1 className="max-w-2xl mb-4 text-4xl font-extrabold 
             tracking-tight leading-none md:text-5xl xl:text-6xl"
             >
-              {t("landing-title")}
+              <strong>Crombie</strong><span className="text-yellow-500">Wallet</span>
             </h1>
             <p className="max-w-2xl mb-6 font-light text-gray-500 
               lg:mb-8 md:text-lg lg:text-xl">
-              {t("landing-subtitle")}
+              <strong className="font-light italic">Your Personal Money Manager</strong>
+            </p>
+            <p className="max-w-2xl mb-4 font-light text-gray-500 lg:mb-4 md:text-lg lg:text-xl">
+              <strong className="font-semibold text-black">Effortlessly</strong> handle your finances with Crom<span className="text-amber-400">Bi</span>
+            </p>
+            <p className="max-w-2xl mb-4 font-light text-gray-500 lg:mb-4 md:text-lg lg:text-xl">
+              <strong className="font-semibold text-black">Simplify</strong> your life, track your transactions, and stay on top of your budget effortlessly
+            </p>
+            <p className="max-w-2xl mb-4 font-light text-gray-500 lg:mb-4 md:text-lg lg:text-xl">
+              <strong className="font-semibold text-black">Start managing your money</strong> like never before!
             </p>
           </div>
           <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-            {/* Implementar el loader acá tambien para la animación */}
             <Lottie animationData={hero} />
           </div>
         </div>
       </section>
-      <div className="w-1/2 grid grid-cols-2 items-center mb-24">
+      <Brands/>
+      <div className="w-1/2 grid grid-cols-2 items-center mb-4">
         {cardArray.map((card) => (
-          <Cards key={card.id} text={card.text} image={card.image}/>
+          <Cards key={card.id} text={card.text} image={card.image} />
         ))}
       </div>
-      
     </div>
-  )
+  )}
+  </div>
+  );
 }
-
