@@ -43,7 +43,7 @@ const HeaderDashboard = () => {
 
         <div>
           <IconUser />
-          <p>
+          <p style={{ fontSize: '18px' }}>
             {t("header.welcome")}, {userData?.name}
           </p>
         </div>

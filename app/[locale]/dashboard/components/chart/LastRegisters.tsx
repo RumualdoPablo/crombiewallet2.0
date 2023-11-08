@@ -24,16 +24,16 @@ const LastRegisters: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
   const [transactions, setTransactions] = useState([...expenses, ...incomes]);
   const { user } = UserAuth();
 
-  //Estado para configurar el orden
+  //estado para configurar el orden
   const [sortConfig, setSortConfig] = useState({
     key: "date",
     direction: "desc",
   });
 
-  //Estado para controlar cuantos elementos se muestran
+  //estado que controla cuantos elementos muestro
   const [showAll, setShowAll] = useState(false);
 
-  //Ordeno las transacciones por fecha
+  //ordeno las transacciones por fecha
   const sortedTransactions = [...transactions].sort((a, b) => {
     if (a[sortConfig.key] < b[sortConfig.key]) {
       return sortConfig.direction === "asc" ? -1 : 1;
@@ -44,7 +44,7 @@ const LastRegisters: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
     return 0;
   });
 
-  //Funcion para cambiar el orden ascendente o descendente
+  //funcion que cambia el orden asc o desc
   const requestSort = (key: string) => {
     let direction = "asc";
     if (sortConfig.key === key && sortConfig.direction === "asc") {
@@ -53,7 +53,7 @@ const LastRegisters: React.FC<DataProps> = ({ expenses, incomes, texts }) => {
     setSortConfig({ key, direction });
   };
 
-  //Función para eliminar una entrada
+  //funcion para eliminar una entrada
   const handleDeleteClick = (id: string) => {
     const updatedTransactions = transactions.filter((transaction) => transaction.id !== id);
     setTransactions(updatedTransactions);
