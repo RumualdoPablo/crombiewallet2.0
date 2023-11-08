@@ -64,7 +64,7 @@ export default function Home() {
                 lg:mb-8 md:text-lg lg:text-xl">
                 {t("bullet-points.1")}
               </p>
-              <p className="max-w-2xl mb-4 font-light text-gray-500 lg:mb-4 md:text-lg lg:text-xl">
+              <p className="max-w-2xl mb-4 font-normal text-gray-500 lg:mb-4 md:text-lg lg:text-xl">
               {t("bullet-points.2")} Crombie<span className="text-amber-400">Wallet</span>
               </p>
               <p className="max-w-2xl mb-4 font-normal text-gray-500 lg:mb-4 md:text-lg lg:text-xl">
