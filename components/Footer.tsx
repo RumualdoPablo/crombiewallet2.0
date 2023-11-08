@@ -32,7 +32,7 @@ function Footer() {
         <h1 className="text-4xl font-bold cursor-pointer ml-10">
           <Link href={"/"} locale="en">
             <span className="text-black">Crombie</span>
-            <span className="text-yellow">Wallet</span>
+            <span className="text-yellow-400">Wallet</span>
           </Link>
         </h1>
         <span className={`text-lg text-gray-900 sm:text-center pr-2 ${theme === 'dark' ? 'dark-mode-font' : ''}`}>

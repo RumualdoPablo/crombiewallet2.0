@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next-intl/link";
 import { IconWorld } from "@tabler/icons-react";
 import React, { useState } from "react";
@@ -9,6 +10,7 @@ import ThemeSwitch from "./ThemeSwitch";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next-intl/client";
 import { useRouter } from "next/navigation";
+import Image from 'next/image';
 
 const Navbar = () => {
   const { user, logOut } = UserAuth();
@@ -32,25 +34,27 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="h-20 w-full border-b-2 flex items-center justify-between p-2 text-black fixed top-0 bg-white">
+    <nav className="h-20 w-full border-b-2 flex items-center justify-between p-2 text-black">
       <div className="flex items-center dark-mode-font ml-5">
         <h1 className="text-4xl font-bold cursor-pointer">
-          <Link href={"/"} locale="en">
-            <span className="text-black">C</span>
-            <span className="text-yellow">W</span>
-          </Link>
+        <Link href={"/"} locale="en">
+  <div className="flex items-center">
+    <Image src="/favicon.ico" alt="" width={32} height={32} />
+    <span className="text-yellow-400 text-4xl">W</span>
+  </div>
+</Link>
         </h1>
       </div>
 
       <div className="flex gap-20 ml-28">
         <Link href="/about">
-          <span className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition duration-300">
+          <span className="text-gray-500 font-medium dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition duration-300">
             About
           </span>
         </Link>
 
         <Link href="/faq">
-          <span className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition duration-300">
+          <span className="text-gray-500 font-medium dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition duration-300">
             FAQ
           </span>
         </Link>
@@ -109,7 +113,7 @@ const Navbar = () => {
             <button
               type="button"
               onClick={handleSignOut}
-              className="text-white bg-red active:bg-red-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center "
+              className="text-white bg-red-600 active:bg-red-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center "
             >
               Sign Out
             </button>
