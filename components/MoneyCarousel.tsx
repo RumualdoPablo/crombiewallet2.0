@@ -19,10 +19,10 @@ const MoneyCarousel = () => {
     }, []);
 
     return (
-        <div className="w-full space-y-8 relative">
-            <div className="relative overflow-hidden w-full no-scrollbar py-12">
+        <div className="w-full space-y-8 relative py-12">
+            <div className="relative overflow-hidden w-full no-scrollbar">
                 {dolarData && (
-                    <div className="animate-[right2left_20s_linear_infinite] whitespace-nowrap items-center flex">
+                    <div className="animate-[right2left_20s_linear_infinite] whitespace-nowrap items-center flex ">
                         <p className="font-gilroy font-black lg:text-[40px] uppercase text-black min-w-max mx-3 leading-none">
                             Oficial: {dolarData.oficial}
                         </p>

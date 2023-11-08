@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Gestor de Finanzas
 
-## Getting Started
+El proyecto fue realizado utilizando las siguientes tecnologías:
 
-First, run the development server:
+- **Next.js 13:** Para la construcción del front-end.
+- **Tailwind CSS:** Para los estilos y diseño.
+- **TypeScript:** Para la lógica de la aplicación.
+- **Firebase:** Para la gestión de bases de datos.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Requerimientos Generales
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+El proyecto tiene como objetivo principal permitir a los usuarios gestionar sus finanzas personales, cargando en la aplicación el ingreso y egreso de su dinero, con algunas otras funcionalidades más...
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Requerimientos Generales
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- La aplicación deberá ser apta para celulares, tablets, notebooks y desktops.
+- Deberá incluir un **Readme** con el procedimiento de inicialización del proyecto y las **Historias de Usuario (HU)** junto con los agregados de valor implementados.
 
-## Learn More
+## Historias de Usuario
 
-To learn more about Next.js, take a look at the following resources:
+### HU1 - Registro de Usuario
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+La aplicación deberá tener un formulario de registro de usuario que solicita los siguientes datos:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Nombre de usuario.
+- Email (debe ser un correo válido).
+- Contraseña (debe tener al menos 8 caracteres, incluyendo letras, números y al menos un carácter especial).
 
-## Deploy on Vercel
+#### Agregado de valor:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Enviar un email al usuario para confirmar la activación de la cuenta.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### HU2 - Inicio de Sesión
+
+La aplicación deberá tener un formulario de inicio de sesión que solicita los siguientes datos:
+
+- Email.
+- Contraseña.
+
+Ambos campos son necesarios para iniciar sesión.
+
+### HU3 - Registrar Movimiento de Dinero
+
+La aplicación cuenta con un formulario para registrar un movimiento de dinero, ya sea de ingreso o egreso. Los detalles del movimiento son:
+
+- Monto (puede tener como máximo dos decimales).
+- Título del movimiento.
+- Descripción para justificar el movimiento.
+
+### HU4 - Home
+
+En la página principal se le muestra al usuario:
+
+- El balance total de su dinero.
+- Su nombre de usuario.
+- Un botón para registrar un movimiento.
+- Un botón para ocultar el balance.
+- Un listado de los últimos movimientos. El listado de movimientos está paginado, ordenado por fecha e indica el monto, el tipo de movimiento y la fecha.
+
+## Agregados de Valor Generales
+
+- Agregar algún gráfico de tortas que indique el tipo de dinero por ubicación o un gráfico que indique el movimiento del dinero en el tiempo.
+- Conectar con alguna API que detalle el valor actual del dólar para saber el valor dolarizado.
+- Establecer un notificador de gastos que genere una notificación cuando el usuario supera un cierto monto de dinero establecido por el usuario.
+- Internacionalización: Se podrá elegir el idioma con un toggle en donde podrás ver la aplicación en español o en inglés.
