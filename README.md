@@ -1,5 +1,24 @@
 # Gestor de Finanzas
 
+El proyecto tiene como objetivo principal permitir a los usuarios gestionar sus finanzas personales, cargando en la aplicación el ingreso y egreso de su dinero, con algunas otras funcionalidades más...
+
+## Procedimiento de Inicialización del Proyecto
+
+1. **Clonar el Repositorio**: Clone el repositorio del proyecto desde [URL del Repositorio](https://github.com/RumualdoPablo/crombiewallet2.0.git) en su máquina local.
+
+2. **Instalar Dependencias**: Asegúrese de tener Node.js y npm instalados. En el directorio raíz del proyecto, ejecute el siguiente comando para instalar las dependencias:
+
+    npm install
+
+**Ejecución del Proyecto:** Inicie la aplicación con el siguiente comando:
+
+    npm run dev
+
+**Acceso a la Aplicación:** La aplicación estará disponible en http://localhost:3000. Abra su navegador y acceda a esta URL para utilizar el Gestor de Finanzas o acceda desde el siguiente link: (https://crombiewallet2-0-pablo-rumualdos-projects.vercel.app/) 
+
+**Disfrute nuestra aplicación y administre sus finanzas con seguridad**
+
+
 El proyecto fue realizado utilizando las siguientes tecnologías:
 
 - **Next.js 13:** Para la construcción del front-end.
@@ -7,9 +26,6 @@ El proyecto fue realizado utilizando las siguientes tecnologías:
 - **TypeScript:** Para la lógica de la aplicación.
 - **Firebase:** Para la gestión de bases de datos.
 
-## Requerimientos Generales
-
-El proyecto tiene como objetivo principal permitir a los usuarios gestionar sus finanzas personales, cargando en la aplicación el ingreso y egreso de su dinero, con algunas otras funcionalidades más...
 
 ### Requerimientos Generales
 
