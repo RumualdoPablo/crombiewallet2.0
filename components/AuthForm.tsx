@@ -9,7 +9,7 @@ import Button from "./Button"
 
 type Variant = "LOGIN" | "REGISTER"
 
-const AuthForm = () => {
+const AuthForm = ({ toggleModal }: { toggleModal: () => void }) => {
   const [variant, setVariant] = useState<Variant>("LOGIN")
 
   const toggleVariant = useCallback(() => {
@@ -25,6 +25,7 @@ const AuthForm = () => {
   const handleSignIn = async () => {
     try {
         await googleSignIn();
+        toggleModal();
     } catch (error) {
         console.log(error);
     }
@@ -45,7 +46,7 @@ const AuthForm = () => {
             </div>
           </div>
           <div className="mx-20">
-          <Button onClick={googleSignIn}> Google </Button>
+          <Button onClick={handleSignIn}> Google </Button>
       </div>
       </div>
 

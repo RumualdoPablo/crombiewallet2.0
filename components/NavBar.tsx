@@ -10,7 +10,7 @@ import ThemeSwitch from "./ThemeSwitch";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next-intl/client";
 import { useRouter } from "next/navigation";
-import Image from 'next/image';
+import Image from "next/image";
 
 const Navbar = () => {
   const { user, logOut } = UserAuth();
@@ -37,12 +37,12 @@ const Navbar = () => {
     <nav className="h-20 w-full border-b-2 flex items-center justify-between p-2 text-black">
       <div className="flex items-center dark-mode-font ml-5">
         <h1 className="text-4xl font-bold cursor-pointer">
-        <Link href={"/"} locale="en">
-  <div className="flex items-center">
-    <Image src="/favicon.ico" alt="" width={32} height={32} />
-    <span className="text-yellow-400 text-4xl">W</span>
-  </div>
-</Link>
+          <Link href={"/"} locale="en">
+            <div className="flex items-center">
+              <Image src="/favicon.ico" alt="" width={32} height={32} />
+              <span className="text-yellow-400 text-4xl">W</span>
+            </div>
+          </Link>
         </h1>
       </div>
 
@@ -122,7 +122,7 @@ const Navbar = () => {
       </div>
 
       <Modal toggleModal={toggleModal} isOpen={isOpen}>
-        <AuthForm />
+        <AuthForm toggleModal={toggleModal}/>
       </Modal>
     </nav>
   );
