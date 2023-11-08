@@ -7,6 +7,7 @@ import Cards from "@/components/LandingComponents/Cards"
 import Brands from "@/components/Brands";
 import Loader from "@/components/LoadingComponents/Loader";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,7 +25,6 @@ export default function Home() {
   }, []);
 
   const t = useTranslations("index");
-
 
   const cardArray = [
     {
@@ -45,48 +45,66 @@ export default function Home() {
       image: "./finanzas.svg"
     }]
 
-  return (
-    <div className="flex min-h-screen flex-col items-center">
-    {isLoading ? (
-      <Loader /> // Muestra el cargador mientras isLoading sea verdadero
-    ) : (
-      <div>
-      <section className="">
-        <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 
-          xl:gap-0 lg:py-16 lg:grid-cols-12">
-          <div className="mr-auto place-self-center lg:col-span-7">
-            <h1 className="max-w-2xl mb-4 text-4xl font-extrabold 
-            tracking-tight leading-none md:text-5xl xl:text-6xl"
-            >
-              <strong>Crombie</strong><span className="text-yellow-500">Wallet</span>
-            </h1>
-            <p className="max-w-2xl mb-6 font-light text-gray-500 
-              lg:mb-8 md:text-lg lg:text-xl">
-              {t("bullet-points.1")}
-            </p>
-            <p className="max-w-2xl mb-4 font-light text-gray-500 lg:mb-4 md:text-lg lg:text-xl">
-            {t("bullet-points.2")} Crombie<span className="text-amber-400">Wallet</span>
-            </p>
-            <p className="max-w-2xl mb-4 font-light text-gray-500 lg:mb-4 md:text-lg lg:text-xl">
-            {t("bullet-points.3")}
-            </p>
-            <p className="max-w-2xl mb-4 font-light text-gray-500 lg:mb-4 md:text-lg lg:text-xl">
-            {t("bullet-points.4")}
-            </p>
-          </div>
-          <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-            <Lottie animationData={hero} />
+    return (
+      <div className="flex min-h-screen flex-col items-center">
+      {isLoading ? (
+        <Loader /> // Muestra el cargador mientras isLoading sea verdadero
+      ) : (
+        <div>
+        <section className="">
+          <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 
+            xl:gap-0 lg:py-16 lg:grid-cols-12">
+            <div className="mr-auto place-self-center lg:col-span-7">
+              <h1 className="max-w-2xl mb-4 text-4xl font-extrabold 
+              tracking-tight leading-none md:text-5xl xl:text-6xl"
+              >
+                <strong>Crombie</strong><span className="text-yellow-500">Wallet</span>
+              </h1>
+              <p className="max-w-2xl mb-6 font-light text-gray-500 
+                lg:mb-8 md:text-lg lg:text-xl">
+                {t("bullet-points.1")}
+              </p>
+              <p className="max-w-2xl mb-4 font-light text-gray-500 lg:mb-4 md:text-lg lg:text-xl">
+              {t("bullet-points.2")} Crombie<span className="text-amber-400">Wallet</span>
+              </p>
+              <p className="max-w-2xl mb-4 font-light text-gray-500 lg:mb-4 md:text-lg lg:text-xl">
+              {t("bullet-points.3")}
+              </p>
+              <p className="max-w-2xl mb-4 font-light text-gray-500 lg:mb-4 md:text-lg lg:text-xl">
+              {t("bullet-points.4")}
+              </p>
+            </div>
+            <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
+                <Lottie animationData={hero} />
+              </div>
+            </div>
+          </section>
+          <Brands />
+          <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+            <div className="lg:col-span-8">
+              <div className="w-full sm:w-1/2 md:w-2/3 lg:w-3/4 grid grid-cols-2 items-center mb-4">
+                {cardArray.map((card) => (
+                  <Cards key={card.id} text={card.text} image={card.image} />
+                ))}
+              </div>
+            </div>
+            <div className="lg:col-span-4">
+              <div className="text-container">
+                <h1 className="max-w-2xl mb-4 text-3xl font-extrabold 
+                  tracking-tight leading-none md:text-4xl xl:text-4xl"
+                >
+                  {t("landing-title")}
+                </h1>
+                <p className="max-w-2xl mb-6 font-light text-gray-500 
+                  lg:mb-8 md:text-lg lg:text-xl">
+                  {t("landing-subtitle")}
+                </p>
+                <Image src="/logos/features.png" alt="" width={400} height={400} />
+              </div>
+            </div>
           </div>
         </div>
-      </section>
-      <Brands/>
-      <div className="w-1/2 grid grid-cols-2 items-center mb-4">
-        {cardArray.map((card) => (
-          <Cards key={card.id} text={card.text} image={card.image} />
-        ))}
-      </div>
+      )}
     </div>
-  )}
-  </div>
   );
-}
+};
