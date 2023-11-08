@@ -8,6 +8,12 @@
             "2": "Seamlessly convert currency, keeping you updated on global financial trends.",
             "3": "Switch between Spanish and English seamlessly, making the app accessible for everyone.",
             "4": "Visualize your spending and currency trends through interactive charts and graphs"
+        },
+        "bullet-points": {
+            "1": "Your Personal Money Manager",
+            "2": "Effortlessly handle your finances with ",
+            "3": "Simplify your life, track your transactions, and stay on top of your budget",
+            "4": "Start managing your money like never before!"
         }
     },
     "dashboard": {
@@ -32,5 +38,38 @@
         "balance": "Balance",
         "income": "Incomes",
         "expense": "Expenses"
+    },
+    "about":{
+        "title":"What we do",
+        "subtitle": "We are providing a better facility",
+        "bullet-points": {
+            "text": "At Crombiewallet, we are committed to empowering individuals to take control of their finances and make informed decisions.",
+            "1": "We offer intuitive and easy-to-use tools that allow you to track your income and expenses effortlessly.",
+            "2":"Data Security: Your security is our top priority.",
+            "3": "Reliable Support: Our support team is always ready to assist you with any questions or concerns you may have.",
+            "4": "Continuous Improvement: We are dedicated to continuously improving our platform based on your feedback"
+        },
+        "image-text": "Providing business solutions since 10 years"
+    },
+    "faq": {
+        "title": "Here's a list of frequently asked questions to help you learn more about our services and offerings. If you have any additional queries, feel free to reach out to us. We're here to assist you!",
+        "bullet-points": {
+            "1": {
+                "title": "What services do you offer?",
+                "text": "We offer user-friendly financial tools to track income, expenses, investments, and provide valuable insights for informed decision-making."
+            },
+            "2": {
+                "title": "Is my financial data secure?",
+                "text": "Yes, your security is our top priority. We use advanced encryption and security measures to ensure your financial data is safe and protected."
+            },
+            "3": {
+                "title": "How can I contact customer support?",
+                "text": "You can reach our customer support team via email at Crombiewallet@crombie.com or by phone at 333333333."
+            },
+            "4": {
+                "title": "Can I use the platform on mobile devices?",
+                "text": "Yes, our platform is fully responsive and can be accessed on various devices, including smartphones and tablets."
+            }
+        }
     }
 }

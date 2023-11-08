@@ -48,20 +48,20 @@ const Navbar = () => {
 
       <div className="flex gap-20 ml-28">
         <Link href="/about">
-          <span className="text-gray-500 font-medium dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition duration-300">
+          <span className="text-gray-500 font-medium dark-mode-font hover:text-gray-900 dark:hover:text-white transition duration-300">
             About
           </span>
         </Link>
 
         <Link href="/faq">
-          <span className="text-gray-500 font-medium dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition duration-300">
+          <span className="text-gray-500 font-medium dark-mode-font hover:text-gray-900 dark:hover:text-white transition duration-300">
             FAQ
           </span>
         </Link>
 
         {user && (
           <Link href={`/dashboard/${user.uid}`}>
-            <span className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition duration-300">
+            <span className="text-gray-700 dark-mode-font hover:text-gray-900 dark:hover:text-white transition duration-300">
               Dashboard
             </span>
           </Link>

@@ -62,16 +62,16 @@ export default function Home() {
             </h1>
             <p className="max-w-2xl mb-6 font-light text-gray-500 
               lg:mb-8 md:text-lg lg:text-xl">
-              <strong className="font-light italic">Your Personal Money Manager</strong>
+              {t("bullet-points.1")}
             </p>
             <p className="max-w-2xl mb-4 font-light text-gray-500 lg:mb-4 md:text-lg lg:text-xl">
-              <strong className="font-semibold text-black">Effortlessly</strong> handle your finances with Crom<span className="text-amber-400">Bi</span>
+            {t("bullet-points.2")} Crombie<span className="text-amber-400">Wallet</span>
             </p>
             <p className="max-w-2xl mb-4 font-light text-gray-500 lg:mb-4 md:text-lg lg:text-xl">
-              <strong className="font-semibold text-black">Simplify</strong> your life, track your transactions, and stay on top of your budget effortlessly
+            {t("bullet-points.3")}
             </p>
             <p className="max-w-2xl mb-4 font-light text-gray-500 lg:mb-4 md:text-lg lg:text-xl">
-              <strong className="font-semibold text-black">Start managing your money</strong> like never before!
+            {t("bullet-points.4")}
             </p>
           </div>
           <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">

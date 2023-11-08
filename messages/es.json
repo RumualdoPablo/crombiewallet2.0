@@ -8,6 +8,12 @@
             "2": "Cambia de divisas como si nada, manteniendote al dia con las tendencias financieras.",
             "3": "Cambiar entre español e inglés de manera fluida, haciendo que la aplicación sea accesible para todos.",
             "4": "Visualiza tus tendencias de gasto y de moneda a través de gráficos y gráficos interactivos."
+        },
+        "bullet-points": {
+            "1": "Tu administrador de dinero personal",
+            "2": "Administra tus finanzas facilmente con ",
+            "3": "Simplifica tu vida, haz un seguimiento a tus transacciones y mantente dentro de tu presupuesto",
+            "4": "Empieza a administrar tus gastos como nunca antes!"
         }
     },
     "dashboard": {
@@ -32,5 +38,38 @@
         "balance": "Balance",
         "income": "Ingresos",
         "expense": "Gastos"
+    },
+    "about": {
+        "title": "Qué hacemos",
+        "subtitle": "Proporcionamos unas instalaciones mejores",
+        "bullet-points": {
+            "text": "En Crombiewallet, nos comprometemos a capacitar a las personas para que tomen el control de sus finanzas y tomen decisiones informadas.",
+            "1": "Ofrecemos herramientas intuitivas y fáciles de usar que te permiten realizar un seguimiento de tus ingresos y gastos sin esfuerzo.",
+            "2": "Seguridad de los datos: Tu seguridad es nuestra máxima prioridad",
+            "3": "Soporte fiable: Nuestro equipo de soporte está siempre dispuesto a ayudarte con cualquier pregunta o duda que puedas tener.",
+            "4": "Mejora continua: Nos dedicamos a mejorar continuamente nuestra plataforma basándonos en sus comentarios"
+        },
+        "image-text": "Proporcionando soluciones de negocio desde hace 10 años"
+    },
+    "faq": {
+        "title": "Aquí tienes una lista de preguntas frecuentes que te ayudarán a conocer mejor nuestros servicios y ofertas. Si tienes alguna pregunta adicional, no dudes en ponerte en contacto con nosotros. Estamos aquí para ayudarle!",
+        "bullet-points": {
+            "1": {
+                "title": "¿Qué servicios ofrece?",
+                "text": "Ofrecemos herramientas financieras fáciles de usar para realizar un seguimiento de los ingresos, los gastos, las inversiones y proporcionar información valiosa para la toma de decisiones informadas."
+            },
+            "2": {
+                "title": "¿Están seguros mis datos financieros?",
+                "text": "Sí, tu seguridad es nuestra máxima prioridad. Utilizamos medidas avanzadas de encriptación y seguridad para garantizar que tus datos financieros estén seguros y protegidos."
+            },
+            "3": {
+                "title": "¿Cómo puedo ponerme en contacto con el servicio de atención al cliente?",
+                "text": "Puede ponerse en contacto con nuestro equipo de atención al cliente por correo electrónico en Crombiewallet@crombie.com o por teléfono en 333333333."
+            },
+            "4": {
+                "title": "¿Puedo utilizar la plataforma en dispositivos móviles?",
+                "text": "Sí, nuestra plataforma es totalmente responsive y se puede acceder a ella en varios dispositivos, incluidos smartphones y tablets."
+            }
+        }
     }
 }
